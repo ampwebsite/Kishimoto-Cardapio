@@ -1,0 +1,2983 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kishimoto Sushi | Sushi delivery em Imbituba</title>
+<meta name="description" content="Combinados e peças avulsas de sushi, somente delivery em Imbituba - SC. Peça no Kishimoto Sushi!">
+<meta property="og:site_name" content="Kishimoto Sushi">
+<meta property="og:title" content="Kishimoto Sushi">
+<meta property="og:description" content="Combinados e peças avulsas de sushi, somente delivery em Imbituba - SC. Peça no Kishimoto Sushi!">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kishimoto Sushi">
+<meta name="twitter:description" content="Combinados e peças avulsas de sushi, somente delivery em Imbituba - SC. Peça no Kishimoto Sushi!">
+<link rel="icon" type="image/png" href="assets/imagens/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --rosa: #D93A2B;
+    --rosa-escuro: #8E1B12;
+    --rosa-texto: #F4F4F4;
+    --rosa-claro: #1C1C1C;
+    --cobre: #FF5443;
+    --cobre-claro: #D93A2B;
+    --branco: #FFFFFF;
+    --creme: #0A0A0A;
+    --texto: #F4F4F4;
+    --texto-claro: #B8B8B8;
+
+    /* Método de área útil: largura máx. do conteúdo por faixa de tela */
+    --content-max-width: 360px;
+    --layout-gap: 16px;
+    --superficie: #151515;
+  }
+
+  @media (min-width: 768px) {
+    :root { --content-max-width: 728px; --layout-gap: 16px; }
+  }
+  @media (min-width: 881px) {
+    :root { --content-max-width: 780px; --layout-gap: 16px; }
+  }
+  @media (min-width: 1025px) {
+    :root { --content-max-width: 924px; --layout-gap: 16px; }
+  }
+  @media (min-width: 1201px) {
+    :root { --content-max-width: 980px; --layout-gap: 32px; }
+  }
+  @media (min-width: 1367px) {
+    :root { --content-max-width: 1120px; --layout-gap: 32px; }
+  }
+
+  .section-inner {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  body {
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    font-weight: 400;
+    color: var(--rosa-texto);
+    background: var(--creme);
+  }
+
+  h1, h2, h3 {
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    font-weight: 600;
+  }
+
+  .btn-header, .tag-pill, nav a, .btn-add {
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    letter-spacing: 0.4px;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    position: relative;
+    padding-bottom: 40px;
+    z-index: 50;
+  }
+
+  /* O recorte ondulado fica num pseudo-elemento de fundo, não no header em si,
+     assim o menu-wrap (dropdown mobile) não é cortado pelo clip-path. */
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #000;
+    border-bottom: 3px solid var(--rosa);
+    z-index: 0;
+  }
+
+  header .section-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cart-flutuante {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rosa), var(--rosa-escuro));
+    color: var(--branco);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    cursor: pointer;
+    z-index: 89;
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .cart-flutuante.visivel {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+  }
+
+  .cart-flutuante svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .cart-flutuante-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: var(--superficie);
+    color: var(--rosa-texto);
+    font-size: 11px;
+    font-weight: 700;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    border: 1.5px solid var(--branco);
+  }
+
+  header .section-inner {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    gap: var(--layout-gap);
+  }
+
+  .menu-wrap {
+    display: flex;
+    align-items: center;
+    gap: var(--layout-gap);
+  }
+
+  /* Hambúrguer só aparece no mobile (ver media query abaixo) */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  .hamburger span {
+    width: 24px;
+    height: 2px;
+    background: var(--superficie);
+    border-radius: 2px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-placeholder {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--rosa);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .logo-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: var(--branco);
+    font-size: 15px;
+  }
+
+  .btn-header {
+    background: linear-gradient(135deg, var(--rosa), var(--rosa-escuro));
+    color: var(--branco);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    transition: opacity 0.2s ease;
+  }
+
+  .btn-header:hover {
+    opacity: 0.88;
+  }
+
+  /* ===== CARRINHO ===== */
+  .cart-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 90;
+  }
+
+  .cart-overlay.aberto {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .cart-painel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 360px;
+    max-width: 90vw;
+    background: var(--creme);
+    box-shadow: -8px 0 24px rgba(0,0,0,0.15);
+    z-index: 91;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.25s ease;
+  }
+
+  .cart-painel.aberto {
+    transform: translateX(0);
+  }
+
+  .cart-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 2px solid var(--rosa);
+  }
+
+  .cart-topo h3 {
+    font-size: 18px;
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    font-style: italic;
+    color: var(--rosa-texto);
+  }
+
+  .cart-fechar {
+    background: none;
+    border: none;
+    font-size: 28px;
+    line-height: 1;
+    color: var(--rosa-texto);
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .cart-lista {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 24px;
+  }
+
+  .cart-vazio {
+    color: var(--rosa-texto);
+    opacity: 0.7;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 24px;
+  }
+
+  .cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rosa-claro);
+  }
+
+  .cart-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .cart-item-nome {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--rosa-texto);
+  }
+
+  .cart-item-preco {
+    font-size: 13px;
+    color: var(--rosa-texto);
+    opacity: 0.75;
+  }
+
+  .cart-item-qtd {
+    font-size: 12px;
+    color: var(--rosa-texto);
+    opacity: 0.6;
+  }
+
+  .cart-item-remover {
+    background: none;
+    border: none;
+    font-size: 20px;
+    line-height: 1;
+    color: var(--rosa-texto);
+    opacity: 0.6;
+    cursor: pointer;
+    padding: 4px 8px;
+  }
+
+  .cart-item-remover:hover {
+    opacity: 1;
+  }
+
+  .cart-acoes {
+    display: flex;
+    gap: 10px;
+    padding: 0 24px 16px;
+  }
+
+  .cart-btn-secundario {
+    flex: 1;
+    background: none;
+    border: 1px solid var(--rosa-escuro);
+    color: var(--rosa-texto);
+    border-radius: 20px;
+    padding: 10px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: opacity 0.2s ease, background 0.2s ease;
+  }
+
+  .cart-btn-secundario:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .cart-btn-secundario:not(:disabled):hover {
+    background: var(--rosa-claro);
+  }
+
+  .cart-rodape {
+    padding: 20px 24px;
+    border-top: 2px solid var(--rosa);
+  }
+
+  .cart-pagamento {
+    margin-bottom: 16px;
+  }
+
+  .cart-pagamento-label {
+    display: block;
+    font-size: 13px;
+    color: var(--rosa-texto);
+    margin-bottom: 8px;
+  }
+
+  .cart-pagamento-opcoes {
+    display: flex;
+    gap: 8px;
+  }
+
+  .pagamento-pill {
+    flex: 1;
+    background: none;
+    border: 1px solid var(--rosa-escuro);
+    color: var(--rosa-texto);
+    border-radius: 20px;
+    padding: 9px 10px;
+    font-size: 13px;
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .pagamento-pill:hover {
+    background: var(--rosa-claro);
+  }
+
+  .pagamento-pill.selecionada {
+    background: var(--rosa-escuro);
+    color: var(--branco);
+  }
+
+  .cart-pagamento-opcoes.erro .pagamento-pill {
+    border-color: #C0392B;
+  }
+
+  .cart-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 14px;
+    color: var(--rosa-texto);
+  }
+
+  .cart-total span {
+    font-size: 14px;
+  }
+
+  .cart-total strong {
+    font-size: 20px;
+  }
+
+  .cart-btn-finalizar {
+    width: 100%;
+    background: linear-gradient(135deg, var(--rosa), var(--rosa-escuro));
+    color: var(--branco);
+    border: none;
+    border-radius: 20px;
+    padding: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    letter-spacing: 0.4px;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    transition: opacity 0.2s ease;
+  }
+
+  .cart-btn-finalizar:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .cart-btn-finalizar:not(:disabled):hover {
+    opacity: 0.9;
+  }
+
+  .cart-btn-finalizar.fechado {
+    background: #f2665a;
+  }
+
+  /* ===== HERO (split: imagem + cartão) ===== */
+  .hero.section-inner {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .hero-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 2px solid var(--cobre-claro);
+  }
+
+  /* Lado esquerdo: imagem (placeholder) */
+  .hero-image {
+    position: relative;
+    background: var(--rosa-claro);
+    color: var(--rosa-texto);
+    font-size: 14px;
+    text-align: center;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .hero-image img,
+  .hero-image video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-image {
+    cursor: pointer;
+  }
+
+  .hero-slide {
+    opacity: 0;
+    transition: opacity 1.2s ease;
+  }
+
+  .hero-slide.ativa {
+    opacity: 1;
+  }
+
+  .hero-image.pausado::after {
+    content: '\275A\275A';
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    z-index: 2;
+    font-size: 14px;
+    color: var(--branco);
+    background: rgba(0,0,0,0.45);
+    padding: 4px 8px;
+    border-radius: 6px;
+    letter-spacing: 2px;
+  }
+
+  .produto-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: inherit;
+  }
+
+  /* Lado direito: cartão com o nome/tagline, em rosa suave */
+  .hero-content {
+    background: #192797;
+    color: var(--branco);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 48px;
+    gap: 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 52px;
+    line-height: 1.1;
+    font-weight: 700;
+    font-style: italic;
+    letter-spacing: 0;
+  }
+
+  .hero-logo {
+    align-self: center;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    display: block;
+  }
+
+  .horario-funcionamento {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: -6px;
+  }
+
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--branco);
+    padding: 6px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .status .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #5fe08a;
+    box-shadow: 0 0 0 3px rgba(95, 224, 138, 0.25);
+    animation: pulseStatus 2s infinite;
+  }
+
+  @keyframes pulseStatus {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.45; }
+  }
+
+  .status.is-closed .dot {
+    background: #f2665a;
+    box-shadow: 0 0 0 3px rgba(242, 102, 90, 0.25);
+  }
+
+  .horario-detalhe {
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.75);
+    text-align: center;
+  }
+
+  .loja-fechada-banner {
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    background: #f2665a;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    padding: 10px 16px;
+    line-height: 1.4;
+  }
+
+  .loja-fechada-banner[hidden] {
+    display: none;
+  }
+
+  .hero-content p {
+    font-size: 15px;
+    line-height: 1.6;
+    opacity: 0.9;
+    max-width: 380px;
+  }
+
+  .tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  .tag-pill {
+    border: 1px solid var(--cobre-claro);
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  @media (min-width: 901px) {
+    .tags {
+      flex-wrap: nowrap;
+      gap: 8px;
+    }
+    .tag-pill {
+      padding: 8px 12px;
+      white-space: nowrap;
+    }
+  }
+
+  /* ===== PRODUTOS ===== */
+  #produtos {
+    padding-top: 20px;
+    padding-bottom: 60px;
+  }
+
+  .produtos-titulo {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--rosa-texto);
+    margin-bottom: 32px;
+    letter-spacing: 1px;
+    position: relative;
+    padding-bottom: 14px;
+  }
+
+  .produtos-titulo::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 56px;
+    height: 4px;
+    border-radius: 4px;
+    background: var(--cobre);
+  }
+
+  .categorias-bolinhas {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .categoria-bolinha {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+
+  .categoria-bolinha-img {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--rosa-claro);
+    border: 2px solid var(--cobre-claro);
+    background-size: cover;
+    background-position: center;
+  }
+
+  .categoria-bolinha-img[data-categoria-icone="tradicionais"] {
+    background-image: url('assets/imagens/tadicional.jpg');
+  }
+
+  .categoria-bolinha-img[data-categoria-icone="doces"] {
+    background-image: url('assets/imagens/morango.jpg');
+  }
+
+  .categoria-bolinha-img[data-categoria-icone="porcoes"] {
+    background-image: url('assets/imagens/batata.jpg');
+  }
+
+  .categoria-bolinha-img[data-categoria-icone="bebidas"] {
+    background-image: url('assets/imagens/lata.jpg');
+  }
+
+  .categoria-bolinha span {
+    font-size: 13px;
+    color: var(--rosa-texto);
+    font-weight: 600;
+  }
+
+  .categoria-titulo {
+    scroll-margin-top: 90px;
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--rosa-texto);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 48px 0 24px;
+    position: relative;
+    padding-bottom: 14px;
+  }
+
+  .categoria-titulo::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 56px;
+    height: 4px;
+    border-radius: 4px;
+    background: var(--cobre);
+  }
+
+  .categoria-titulo:first-of-type {
+    margin-top: 8px;
+  }
+
+  /* FOOTER */
+  footer {
+    position: relative;
+    margin-top: 40px;
+  }
+
+  .footer-body {
+    background: linear-gradient(155deg, var(--rosa-escuro) 0%, var(--rosa-texto) 100%);
+    color: var(--branco);
+    padding-top: 72px;
+    clip-path: url(#waveClipRodape);
+  }
+
+  .footer-conteudo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    padding: 10px 0;
+  }
+
+  .footer-logo {
+    width: 48px;
+    height: 48px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    text-align: center;
+    color: var(--branco);
+    opacity: 0.8;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .footer-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    list-style: none;
+  }
+
+  .footer-nav a {
+    color: var(--branco);
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.9;
+  }
+
+  .footer-nav a:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+
+  .footer-social {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .footer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 13px;
+    line-height: 1.5;
+    opacity: 0.9;
+    text-align: center;
+  }
+
+  .footer-info strong {
+    font-weight: 600;
+  }
+
+  .footer-social-icones {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .footer-social-icones a {
+    color: var(--branco);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+  }
+
+  .footer-social-icones svg {
+    width: 15px;
+    height: 15px;
+    fill: var(--branco);
+  }
+
+  .footer-copy {
+    font-size: 10px;
+    opacity: 0.85;
+    padding: 8px 0;
+    border-top: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .footer-copy-linha {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-copy-linha span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 10px;
+  }
+
+  .footer-copy-linha .footer-rights {
+    text-align: left;
+    min-width: 0;
+  }
+
+  .footer-copy-linha .footer-nav {
+    gap: 12px;
+    font-size: 10px;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    justify-self: center;
+    min-width: 0;
+  }
+
+  .footer-copy-linha .footer-dev {
+    text-align: right;
+    min-width: 0;
+  }
+
+  .footer-copy-linha .footer-dev a {
+    color: var(--branco);
+    text-decoration: underline;
+    opacity: 0.95;
+    font-size: 10px;
+  }
+
+  .footer-copy-linha .footer-dev a:hover {
+    opacity: 1;
+  }
+
+  @media (max-width: 700px) {
+    .footer-conteudo {
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+  }
+
+  @media (max-width: 780px) {
+    .footer-copy-linha {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-copy-linha span {
+      white-space: normal;
+      text-align: center;
+    }
+
+    .footer-copy-linha .footer-nav {
+      order: 1;
+      gap: 8px;
+      font-size: 9px;
+      justify-content: center;
+    }
+
+    .footer-copy-linha .footer-rights {
+      order: 2;
+    }
+
+    .footer-copy-linha .footer-dev {
+      order: 3;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .footer-copy-linha span {
+      font-size: 8px;
+    }
+
+    .footer-copy-linha .footer-nav {
+      gap: 6px;
+      font-size: 8px;
+    }
+
+    .footer-copy-linha .footer-dev a {
+      font-size: 8px;
+    }
+  }
+
+  .slider-wrapper {
+    position: relative;
+  }
+
+  .produtos-grid {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+
+  .produtos-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .produtos-grid .produto-card {
+    flex: 0 0 calc((100% - 48px) / 3);
+    scroll-snap-align: start;
+  }
+
+  /* Grade do catálogo único: sem carrossel, quebra linha e cresce sozinha
+     conforme mais produtos são adicionados no JS. Usa flex (não grid) pra
+     que a última linha, quando incompleta, fique centralizada em vez de
+     grudada na esquerda. */
+  .produtos-grid.grade {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: visible;
+    gap: 24px;
+  }
+
+  .produtos-grid.grade .produto-card {
+    flex: 1 1 230px;
+    max-width: 300px;
+  }
+
+  .slider-seta {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--superficie);
+    border: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    color: var(--rosa-texto);
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .slider-seta.prev {
+    left: -20px;
+  }
+
+  .slider-seta.next {
+    right: -20px;
+  }
+
+  .produto-card {
+    background: var(--superficie);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(122,74,58,0.08);
+    border: 1px solid var(--rosa-claro);
+  }
+
+  .produto-info h3 {
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    font-weight: 600;
+  }
+
+  .produto-img {
+    position: relative;
+    aspect-ratio: 4/3;
+    background: var(--rosa-claro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--rosa-texto);
+    font-size: 13px;
+    text-align: center;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .produto-img.sem-foto {
+    cursor: default;
+  }
+
+  .produto-img-placeholder {
+    font-size: 44px;
+    line-height: 1;
+    opacity: 0.6;
+  }
+
+  .produto-img-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.9s ease;
+  }
+
+  .produto-img-slide.ativa {
+    opacity: 1;
+  }
+
+  .produto-img-dots {
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    z-index: 2;
+  }
+
+  .produto-img-dots .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.6);
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+
+  .produto-img-dots .dot.ativo {
+    background: var(--superficie);
+    transform: scale(1.3);
+  }
+
+  /* ===== MODAL DE FOTOS DO PRODUTO ===== */
+  .img-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    padding: 24px;
+    transition: opacity 0.25s ease;
+  }
+
+  .img-modal.aberto {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .img-modal-conteudo {
+    max-width: min(90vw, 560px);
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .img-modal-conteudo img {
+    max-width: 100%;
+    max-height: 75vh;
+    border-radius: 16px;
+    object-fit: contain;
+    background: var(--superficie);
+    border: 2px solid var(--cobre-claro);
+  }
+
+  .img-modal-legenda {
+    color: var(--branco);
+    font-size: 14px;
+    text-align: center;
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  }
+
+  .img-modal-fechar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255,255,255,0.15);
+    color: var(--branco);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .img-modal-seta {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.15);
+    color: var(--branco);
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .img-modal-seta.prev { left: 20px; }
+  .img-modal-seta.next { right: 20px; }
+
+  @media (max-width: 600px) {
+    .img-modal-seta { width: 36px; height: 36px; }
+    .img-modal-fechar { width: 34px; height: 34px; top: 12px; right: 12px; }
+    .img-modal-seta.prev { left: 12px; }
+    .img-modal-seta.next { right: 12px; }
+  }
+
+  /* MODAL DE ADICIONAIS */
+  .add-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.78);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 210;
+    opacity: 0;
+    pointer-events: none;
+    padding: 20px;
+    transition: opacity 0.25s ease;
+  }
+
+  .add-modal-overlay.aberto {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .add-modal {
+    position: relative;
+    background: var(--superficie);
+    border-radius: 18px;
+    padding: 28px 24px 24px;
+    width: 100%;
+    max-width: 380px;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+
+  .add-modal h3 {
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    color: var(--rosa-texto);
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
+
+  .add-modal-preco-base {
+    color: var(--texto-claro);
+    font-size: 13px;
+    margin-bottom: 18px;
+  }
+
+  .add-modal-fechar {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: var(--rosa-claro);
+    color: var(--rosa-texto);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .add-modal-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rosa-claro);
+  }
+
+  .add-modal-item:last-of-type {
+    border-bottom: none;
+  }
+
+  .add-modal-ingredientes {
+    margin-bottom: 4px;
+  }
+
+  .add-modal-ingredientes:empty {
+    display: none;
+  }
+
+  .add-modal-ingredientes-titulo {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--rosa-texto);
+    margin: 10px 0 4px;
+  }
+
+  .add-modal-ingrediente {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--rosa-claro);
+    font-size: 14px;
+    color: var(--texto);
+    cursor: pointer;
+  }
+
+  .add-modal-ingrediente input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--cobre-claro);
+    cursor: pointer;
+  }
+
+  .add-modal-ingrediente.desmarcado {
+    color: var(--texto-claro);
+    text-decoration: line-through;
+  }
+
+  .add-modal-item-nome {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 14px;
+    color: var(--texto);
+  }
+
+  .add-modal-item-preco {
+    font-size: 12px;
+    color: var(--texto-claro);
+    white-space: nowrap;
+  }
+
+  .add-modal-qtd {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+
+  .add-modal-qtd-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--rosa);
+    background: var(--superficie);
+    color: var(--rosa);
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .add-modal-qtd-btn:hover {
+    background: var(--rosa-claro);
+  }
+
+  .add-modal-qtd-valor {
+    min-width: 16px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--texto);
+  }
+
+  .add-modal-confirmar {
+    width: 100%;
+    margin-top: 20px;
+    background: linear-gradient(135deg, var(--rosa), var(--rosa-escuro));
+    color: var(--branco);
+    border: none;
+    border-radius: 999px;
+    padding: 13px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    transition: opacity 0.2s ease;
+  }
+
+  .add-modal-confirmar:hover {
+    opacity: 0.88;
+  }
+
+  .produto-info {
+    padding: 16px;
+  }
+
+  .produto-info h3 {
+    font-size: 15px;
+    color: var(--rosa-texto);
+    margin-bottom: 4px;
+  }
+
+  .produto-info p {
+    font-size: 12px;
+    color: var(--rosa-texto);
+    margin-bottom: 12px;
+  }
+
+  .produto-preco {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .produto-preco span {
+    font-weight: 700;
+    color: var(--rosa-texto);
+    font-size: 16px;
+  }
+
+  .btn-add {
+    background: linear-gradient(135deg, var(--rosa), var(--rosa-escuro));
+    color: var(--branco);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    transition: opacity 0.2s ease;
+  }
+
+  .btn-add:hover {
+    opacity: 0.88;
+  }
+
+  /* ===== RESPONSIVO ===== */
+  @media (max-width: 900px) {
+    header .section-inner {
+      justify-content: space-between;
+    }
+    .logo {
+      order: 1;
+    }
+    .hamburger {
+      display: flex;
+      order: 2;
+    }
+    .menu-wrap {
+      order: 3;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--superficie);
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      padding: 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+      display: none;
+      z-index: 95;
+    }
+    .menu-wrap.aberto {
+      display: flex;
+    }
+    .menu-wrap nav a {
+      color: var(--rosa-texto);
+    }
+    header .section-inner {
+      position: relative;
+    }
+    nav ul {
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+    }
+    .hero.section-inner {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+    .hero-card {
+      grid-template-columns: 1fr;
+    }
+    .hero-image {
+      min-height: 220px;
+    }
+    .hero-content {
+      padding: 32px 24px;
+      align-items: center;
+      text-align: center;
+    }
+    .hero-content p {
+      max-width: 100%;
+    }
+    .tags {
+      justify-content: center;
+    }
+    .produtos-grid .produto-card {
+      flex: 0 0 calc((100% - 16px) / 2);
+      display: flex;
+      flex-direction: column;
+    }
+    .produtos-grid .produto-card .produto-info {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .produtos-grid {
+      gap: 16px;
+    }
+    .slider-seta {
+      width: 32px;
+      height: 32px;
+      font-size: 14px;
+    }
+    .slider-seta.prev {
+      left: -8px;
+    }
+    .slider-seta.next {
+      right: -8px;
+    }
+    .produto-preco {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+      margin-top: auto;
+    }
+    .produto-preco span {
+      font-size: 14px;
+    }
+    .btn-add {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  /* ===== IDENTIDADE KISHIMOTO SUSHI ===== */
+  body { background: #0A0A0A; }
+  header { padding-bottom: 0; }
+  header::before { background: #000 linear-gradient(115deg, var(--rosa) 0 14%, #000 14%); }
+  .hamburger span, .cart-flutuante-badge { background: #fff; }
+  .cart-flutuante-badge { color: #111; }
+  .btn-header { text-transform: uppercase; font-weight: 700; letter-spacing: 1px; }
+  h1, h2, h3 { font-weight: 800; }
+  .hero-content { background: #000 linear-gradient(115deg, var(--rosa) 0 16%, #000 16%); color: #fff; align-items: flex-start; text-align: left; padding: 32px 28px; gap: 14px; }
+  .hero-script { font-family: 'Kaushan Script', cursive; color: var(--cobre); font-size: 24px; margin-top: 8px; }
+  .hero-titulo { font-size: clamp(30px, 6vw, 52px); font-weight: 900; letter-spacing: .14em; line-height: 1.1; color: #fff; }
+  .selo-delivery { display: inline-block; border: 2px solid var(--rosa); color: #fff; padding: 6px 14px; border-radius: 30px; font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn-hero { background: var(--rosa); color: #fff; text-decoration: none; padding: 12px 22px; border-radius: 4px; font-weight: 700; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; border: 2px solid var(--rosa); }
+  .btn-hero.ghost { background: transparent; }
+  .horario-detalhe { color: #cfcfcf; }
+  .hero-image { background: var(--rosa); display: flex; align-items: center; justify-content: center; }
+  .hero-image img { width: 70%; max-width: 360px; height: auto; object-fit: contain; border-radius: 50%; box-shadow: 0 10px 30px rgba(0,0,0,.45); }
+  .produtos-titulo { font-family: 'Kaushan Script', cursive; font-weight: 400; color: var(--rosa-texto); text-transform: none; }
+  .categoria-titulo { font-family: 'Kaushan Script', cursive; font-weight: 400; font-size: 38px; color: var(--rosa); text-transform: none; letter-spacing: 0; }
+  .obs-combo { color: var(--texto-claro); font-size: 13px; margin: -4px 0 14px; }
+  .categoria-bolinha-img { background: var(--rosa); border: 2px solid #fff; display: flex; align-items: center; justify-content: center; font-size: 30px; }
+  .categoria-bolinha-img[data-categoria-icone="combinados"]::before { content: "🍱"; }
+  .categoria-bolinha-img[data-categoria-icone="pecas"]::before { content: "🍣"; }
+  .categoria-bolinha-img.com-foto::before { content: none; }
+  .categoria-bolinha-img.com-foto { background-size: cover; background-position: center; background-repeat: no-repeat; }
+  .produto-card { border: 1px solid #2a2a2a; }
+  .produto-img-placeholder { font-size: 46px; background: linear-gradient(135deg, var(--rosa), var(--rosa-escuro)); }
+  footer, footer .footer-body { background: #000 !important; clip-path: none !important; }
+  footer { border-top: 3px solid var(--rosa); }
+
+  /* ===== CARDS SIMÉTRICOS: mesma largura e altura, preço + botão sempre embaixo ===== */
+  .produtos-grid.grade {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 24px;
+    overflow: visible;
+  }
+  .produtos-grid.grade .produto-card {
+    grid-column: span 2;
+    flex: none;
+    max-width: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  /* última linha incompleta fica centralizada */
+  .produtos-grid.grade .produto-card:nth-child(3n+1):last-child { grid-column: 3 / span 2; }
+  .produtos-grid.grade .produto-card:nth-child(3n+1):nth-last-child(2) { grid-column: 2 / span 2; }
+  .produtos-grid.grade .produto-card:nth-child(3n+2):last-child { grid-column: 4 / span 2; }
+  .produto-card .produto-img { flex: none; }
+  .produto-card .produto-info { display: flex; flex-direction: column; flex: 1; }
+  .produto-card .produto-info p { margin-bottom: 16px; }
+  .produto-card .produto-preco { margin-top: auto; padding-top: 12px; border-top: 1px solid #2a2a2a; }
+  .produto-card .produto-preco span { color: var(--cobre); }
+  @media (max-width: 900px) {
+    .produtos-grid.grade { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .produtos-grid.grade .produto-card,
+    .produtos-grid.grade .produto-card:nth-child(n) { grid-column: span 2; }
+    .produtos-grid.grade .produto-card:nth-child(2n+1):last-child { grid-column: 2 / span 2; }
+  }
+  @media (max-width: 560px) {
+    .produtos-grid.grade { grid-template-columns: 1fr; }
+    .produtos-grid.grade .produto-card,
+    .produtos-grid.grade .produto-card:nth-child(n) { grid-column: auto; }
+    .produto-card .produto-preco { flex-direction: row; align-items: center; }
+    .produto-card .btn-add { width: auto; }
+  }
+
+  /* ===== COMBOS: card com foto que vira ===== */
+  .produtos-grid.grade[data-categoria="combinados"] { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+  .combo-card { width: 210px; height: 385px; perspective: 1000px; }
+  .combo-inner { position: relative; width: 100%; height: 100%; transition: transform .55s; transform-style: preserve-3d; }
+  .combo-card.virado .combo-inner { transform: rotateY(180deg); }
+  .combo-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; background: var(--superficie); border: 1px solid #2a2a2a; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: visibility 0s .27s; }
+  .combo-verso { transform: rotateY(180deg); padding: 14px; visibility: hidden; border-color: var(--rosa); }
+  .combo-card.virado .combo-verso { visibility: visible; }
+  .combo-card.virado .combo-frente { visibility: hidden; }
+  .combo-foto { position: relative; flex: 1; min-height: 0; background: #2a1310 center/cover no-repeat; }
+  .combo-tag { position: absolute; top: 10px; left: 10px; background: var(--rosa); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; }
+  .combo-corpo { padding: 12px 12px 14px; display: flex; flex-direction: column; gap: 4px; }
+  .combo-card h3 { font-size: 15px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #fff; }
+  .combo-card h3 small { font-weight: 600; color: var(--texto-claro); letter-spacing: 0; text-transform: none; font-size: 11px; }
+  .combo-preco { font-size: 20px; font-weight: 800; color: var(--cobre); margin-bottom: 6px; }
+  .combo-sub { font-family: 'Kaushan Script', cursive; color: var(--rosa); font-size: 18px; margin: 2px 0 8px; }
+  .combo-verso ul { list-style: none; flex: 1; overflow-y: auto; font-size: 12.5px; line-height: 1.35; color: #e6e6e6; }
+  .combo-verso li { padding: 3px 0; border-bottom: 1px solid #262626; }
+  .combo-acoes { display: flex; gap: 8px; margin-top: auto; }
+  .combo-verso .combo-acoes { padding-top: 10px; }
+  .combo-acoes button { flex: 1; padding: 9px 6px; font-size: 12px; font-weight: 700; letter-spacing: .04em; border-radius: 6px; cursor: pointer; font-family: 'Montserrat', sans-serif; }
+  .combo-acoes .btn-vermais { background: transparent; color: #fff; border: 1.5px solid #555; }
+  .combo-acoes .btn-vermais:hover { border-color: var(--rosa); }
+  .combo-acoes .btn-add { border-radius: 6px; box-shadow: none; border: none; }
+  @media (max-width: 560px) { .combo-card { width: min(100%, 300px); height: 340px; } }
+
+  /* peças e extras sem foto: cards compactos, sem o bloco vermelho gigante */
+  .produto-img.sem-foto { display: none; }
+  .produto-card .produto-info { padding: 14px; }
+
+  /* ===== POP-UP DE EXTRAS ===== */
+  .add-modal { border-top: 4px solid var(--rosa); }
+  .add-modal h3 { text-transform: uppercase; letter-spacing: .06em; font-weight: 800; }
+  .add-modal-preco-base { color: var(--texto-claro); }
+  .add-modal-confirmar { text-transform: uppercase; letter-spacing: .06em; font-weight: 700; }
+
+  /* Hero: imagem à esquerda, texto à direita (no celular continua empilhado) */
+  @media (min-width: 901px) {
+    .hero-image { order: -1; }
+    .hero-content { background: #000 linear-gradient(245deg, var(--rosa) 0 16%, #000 16%); }
+  }
+
+  /* ===== HERO: correções de tamanho, alinhamento e corte ===== */
+  .hero-card { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .hero-card .hero-content { position: relative; min-width: 0; background: #000; padding: 44px 36px; gap: 16px; align-items: flex-start; text-align: left; }
+  .hero-card .hero-content::after { content: ''; position: absolute; top: 0; right: 0; width: 56px; height: 56px; background: var(--rosa); clip-path: polygon(0 0, 100% 0, 100% 100%); pointer-events: none; }
+  .hero-content h1.hero-titulo { font-size: clamp(26px, 3.6vw, 48px); font-style: normal; font-weight: 900; letter-spacing: .08em; line-height: 1.12; overflow-wrap: normal; }
+  .hero-content p.hero-script { font-size: 26px; line-height: 1.2; opacity: 1; max-width: none; }
+  .hero-cta { width: 100%; }
+  .btn-hero { flex: 1 1 150px; text-align: center; white-space: nowrap; padding: 12px 14px; }
+  .hero-card .horario-funcionamento { align-items: flex-start; margin-top: 0; max-width: 100%; }
+  .hero-card .status { max-width: 100%; border-radius: 14px; text-align: left; font-size: 12px; }
+  .hero-card .horario-detalhe { text-align: left; font-size: 12px; }
+  .hero-card .horario-detalhe strong { color: #fff; font-weight: 600; }
+  .hero-card .hero-image { min-height: 320px; padding: 28px; display: flex; align-items: center; justify-content: center; }
+  .hero-card .hero-image img { position: static; inset: auto; width: min(100%, 340px); height: auto; aspect-ratio: 1 / 1; object-fit: contain; }
+  @media (max-width: 900px) {
+    .hero-card { grid-template-columns: minmax(0, 1fr); }
+    .hero-card .hero-content { padding: 36px 22px; align-items: center; text-align: center; }
+    .hero-content h1.hero-titulo { font-size: clamp(26px, 8.4vw, 44px); }
+    .hero-card .horario-funcionamento { align-items: center; }
+    .hero-card .horario-detalhe { text-align: center; }
+    .hero-card .status { text-align: center; }
+    .hero-card .hero-image { min-height: 0; padding: 24px; }
+    .hero-card .hero-image img { width: min(72%, 260px); }
+  }
+
+  /* ===== PEÇAS UNIDADE: mesmo estilo dos combos ===== */
+  .produtos-grid.grade[data-categoria="pecas"] { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+  .peca-card { width: 210px; height: 250px; background: var(--superficie); border: 1px solid #2a2a2a; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
+  .peca-foto { flex: 1; min-height: 0; background: #111 linear-gradient(135deg, #1d1d1d, #000); position: relative; }
+  .peca-foto:not(.com-foto)::before { content: ''; position: absolute; inset: 0; background: url('assets/imagens/logo.png') center / auto 62% no-repeat; }
+  .peca-foto.com-foto { background-size: cover; background-position: center; }
+  .peca-corpo { padding: 12px 12px 14px; display: flex; flex-direction: column; gap: 10px; }
+  .peca-card h3 { font-size: 12.5px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: #fff; line-height: 1.3; min-height: 2.6em; }
+  .peca-rodape { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .peca-preco { font-size: 18px; font-weight: 800; color: var(--cobre); white-space: nowrap; }
+  .peca-rodape .btn-add { flex: 1; max-width: 110px; padding: 9px 6px; font-size: 12px; font-weight: 700; letter-spacing: .04em; border-radius: 6px; border: none; box-shadow: none; text-align: center; cursor: pointer; }
+  @media (max-width: 560px) {
+    .peca-card { width: calc(50% - 8px); height: 240px; }
+    .peca-corpo { padding: 10px; }
+    .peca-rodape { flex-direction: column; align-items: stretch; }
+    .peca-rodape .btn-add { max-width: none; }
+    .peca-preco { text-align: center; }
+  }
+
+  .obs-combo { text-align: center; max-width: 620px; margin: -4px auto 18px; }
+  .obs-combo strong { font-weight: 800; color: #fff; }
+
+  /* Hero: vídeo preenchendo todo o espaço, sem moldura */
+  .hero-card .hero-image { padding: 0; overflow: hidden; }
+  .hero-card .hero-image video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+  .hero-card .hero-image img.hero-fallback { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: min(72%, 340px); height: auto; aspect-ratio: 1 / 1; border-radius: 0; box-shadow: none; z-index: 0; }
+  @media (max-width: 900px) {
+    .hero-card .hero-image { min-height: 0; aspect-ratio: 1 / 1; }
+    .hero-card .hero-image img.hero-fallback { width: min(60%, 240px); }
+  }
+
+  /* ===== ≤560px: formato original do site, 2 cards por linha (metade da largura menos o espaçamento) ===== */
+  @media (max-width: 560px) {
+    .produtos-grid.grade[data-categoria="combinados"],
+    .produtos-grid.grade[data-categoria="pecas"] { gap: 16px; justify-content: center; }
+    .combo-card, .peca-card { width: calc((100% - 16px) / 2); flex: 0 0 calc((100% - 16px) / 2); }
+    .combo-card { height: 350px; }
+    .peca-card { height: 250px; }
+    .combo-corpo { padding: 10px; gap: 3px; }
+    .combo-card h3 { font-size: 13px; }
+    .combo-card h3 small { display: block; margin-top: 1px; }
+    .combo-preco { font-size: 17px; margin-bottom: 4px; }
+    .combo-acoes { gap: 6px; }
+    .combo-acoes button { padding: 8px 2px; font-size: 11px; letter-spacing: 0; }
+    .combo-verso { padding: 10px; }
+    .combo-sub { font-size: 14px; margin: 0 0 4px; white-space: nowrap; }
+    .combo-verso ul { font-size: 11px; line-height: 1.25; }
+    .combo-verso li { padding: 2px 0; }
+    .combo-tag { font-size: 10px; padding: 3px 8px; top: 8px; left: 8px; }
+    .peca-corpo { padding: 10px; gap: 8px; }
+    .peca-card h3 { font-size: 11.5px; min-height: 3.9em; }
+  }
+
+  .combo-tag { max-width: calc(100% - 20px); line-height: 1.25; border-radius: 12px; }
+  @media (max-width: 560px) { .combo-tag { max-width: calc(100% - 16px); } }
+
+  /* ===== FOTO DOS CARDS: proporção 3:2 (paisagem) ===== */
+  .combo-foto, .peca-foto { flex: none; min-height: 0; aspect-ratio: 3 / 2; width: 100%; }
+  .combo-corpo { flex: 1; min-height: 0; }
+  .combo-resumo { font-size: 11px; line-height: 1.35; color: #bdbdbd; margin: 2px 0 8px; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+  .peca-corpo { flex: 1; justify-content: space-between; }
+  @media (max-width: 560px) { .combo-resumo { -webkit-line-clamp: 5; font-size: 10.5px; } }
+
+  .combo-verso ul { font-size: 12px; }
+  .combo-verso li { padding: 2px 0; }
+  .combo-resumo { -webkit-line-clamp: 6; }
+  @media (max-width: 560px) { .combo-resumo { -webkit-line-clamp: 5; } }
+
+  /* Destaque discreto no horário */
+  .hero-card .horario-detalhe { background: rgba(255,255,255,.05); border-left: 3px solid var(--rosa); border-radius: 0 8px 8px 0; padding: 9px 14px; line-height: 1.5; max-width: 100%; }
+  .hero-card .horario-detalhe strong { font-size: 13px; letter-spacing: .02em; }
+  @media (max-width: 900px) { .hero-card .horario-detalhe { border-left: 0; border-top: 3px solid var(--rosa); border-radius: 0 0 8px 8px; padding: 9px 14px 10px; } }
+
+  /* ===== Status em fita de duas partes ===== */
+  .hero-card .status { display: inline-flex; align-items: stretch; padding: 0; border: 0; background: none; border-radius: 0; gap: 0; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; max-width: 100%; }
+  .status-estado { background: var(--rosa); color: #fff; font-weight: 800; padding: 9px 13px; display: flex; align-items: center; }
+  .status-info { border: 1.5px solid var(--rosa); border-left: 0; padding: 0 13px; display: flex; align-items: center; color: #fff; font-weight: 600; white-space: nowrap; }
+  .status:not(.is-closed) .status-estado { background: #5fe08a; color: #04240f; }
+  .status:not(.is-closed) .status-info { border-color: #5fe08a; }
+  @media (max-width: 400px) { .hero-card .status { letter-spacing: .06em; } .status-estado, .status-info { padding-left: 10px; padding-right: 10px; } }
+
+  /* ===== Horário com dias da semana ===== */
+  .hero-card .horario-detalhe, .hero-card .horario-detalhe:is(*) { background: none; border: 0; border-radius: 0; padding: 0; }
+  .hero-card .horario-detalhe strong { font-size: 13px; }
+  .dias { display: flex; gap: 6px; margin-bottom: 10px; }
+  .dia { width: 30px; height: 30px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; background: var(--rosa); color: #fff; }
+  .dia.off { background: transparent; border: 1px solid #333; color: #666; text-decoration: line-through; }
+  @media (max-width: 900px) { .hero-card .horario-detalhe { border: 0; padding: 0; } .dias { justify-content: center; } }
+
+  /* ===== Hero desktop/notebook: proporção mais harmônica ===== */
+  @media (min-width: 901px) {
+    .hero-card { grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); }
+    .hero-card .hero-content { padding: 30px 40px; gap: 12px; justify-content: center; }
+    .hero-content h1.hero-titulo { font-size: clamp(32px, 4.3vw, 60px); line-height: 1.06; }
+    .hero-content p.hero-script { font-size: 28px; }
+    .hero-card .hero-image { min-height: 0; }
+    .hero-card .hero-image img.hero-fallback { width: min(64%, 320px); }
+    .hero-card .horario-funcionamento { gap: 10px; }
+    .dias { margin-bottom: 8px; }
+  }
+
+  /* ===== Linha única: dias + fita de status ===== */
+  .hero-card .horario-funcionamento { display: flex; flex-direction: column; align-items: center; gap: 8px; width: fit-content; max-width: 100%; margin-top: 2px; }
+  .linha-horario { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 12px; max-width: 100%; }
+  .linha-horario .dias { margin: 0; }
+  .hero-card .horario-detalhe { font-size: 12px; color: #cfcfcf; text-align: center; }
+  .dia.off { text-decoration: none; background: transparent; border: 1px solid #2b2b2b; color: #555; }
+  @media (min-width: 901px) {
+    .hero-card .horario-funcionamento { align-items: center; }
+    .linha-horario { flex-direction: column; align-items: flex-start; justify-content: flex-start; }
+  }
+  @media (min-width: 1280px) {
+    .hero-card { grid-template-columns: minmax(0, .86fr) minmax(0, 1.14fr); }
+    .hero-card .hero-content { padding-left: 30px; padding-right: 30px; }
+    .linha-horario { flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: flex-start; gap: 10px 12px; }
+    .linha-horario .dias { gap: 4px; }
+    .linha-horario .dia { width: 26px; height: 26px; font-size: 11px; }
+    .hero-card .status { font-size: 10.5px; letter-spacing: .08em; }
+    .status-estado { padding: 8px 10px; }
+    .status-info { padding: 0 10px; }
+  }
+  @media (max-width: 900px) { .hero-card .horario-funcionamento { align-items: center; } .linha-horario { justify-content: center; } }
+
+  /* ===== Dias + status alinhados com a largura dos botões ===== */
+  .hero-card .horario-funcionamento { width: 100%; align-items: stretch; gap: 10px; margin-top: 0; }
+  .hero-card .linha-horario { display: grid; grid-template-columns: 1fr; gap: 10px; width: 100%; justify-items: stretch; }
+  .hero-card .linha-horario.duas-colunas { grid-template-columns: 1fr 1fr; }
+  .hero-card .linha-horario .dias { display: flex; width: 100%; gap: 4px; margin: 0; }
+  .hero-card .linha-horario .dia { flex: 1 1 0; width: auto; min-width: 0; height: 30px; }
+  .hero-card .linha-horario .status { display: flex; width: 100%; min-width: 0; font-size: 10.5px; letter-spacing: .07em; }
+  .hero-card .linha-horario .status-estado { flex: none; padding: 0 10px; }
+  .hero-card .linha-horario .status-info { flex: 1; min-width: 0; justify-content: center; padding: 0 8px; height: auto; }
+  .hero-card .linha-horario .status { min-height: 30px; }
+  .hero-card .horario-detalhe { width: 100%; text-align: center; font-size: 12px; color: #cfcfcf; }
+  .hero-card .horario-detalhe .h18 { color: var(--cobre); font-weight: 800; font-size: 15px; letter-spacing: .02em; }
+
+  /* ===== Hero: tudo centralizado também em desktop/notebook ===== */
+  .hero-card .hero-content { align-items: center; text-align: center; }
+  .hero-content p.hero-script,
+  .hero-content h1.hero-titulo { text-align: center; }
+  .hero-card .hero-cta { justify-content: center; }
+  .hero-card .horario-funcionamento { align-items: center; }
+  .hero-card .horario-detalhe,
+  .hero-card .status { text-align: center; }
+  .hero-card .linha-horario { justify-content: center; }
+
+  /* ===== COMBOS e PEÇAS: 5 na mesma linha em notebook/desktop (>=1201px) =====
+     Só essas duas grades vão além da largura do site (1120px de espaço); o resto não muda.
+     Continua quebrando linha: se sobrar card, ele fica centralizado na última linha.
+     Pra desfazer, apague este bloco inteiro. */
+  @media (min-width: 1201px) {
+    .produtos-grid.grade[data-categoria="combinados"],
+    .produtos-grid.grade[data-categoria="pecas"] {
+      width: 1120px;
+      max-width: calc(100vw - 40px);
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  /* ===== HERO: vídeo em 16:9 (1920x1080) só entre 768px e 900px =====
+     Nessa faixa ele estava quadrado e ficava enorme. Pra desfazer, apague este bloco. */
+  @media (min-width: 768px) and (max-width: 900px) {
+    .hero-card .hero-image { aspect-ratio: 16 / 9; }
+  }
+
+  /* ===== COMBOS e PEÇAS: 2 por linha entre 561px e 767px =====
+     Nessa faixa o conteúdo do site fica travado em 320px de área útil; só as duas grades
+     passam a ter 436px (2 cards de 210px + 16px de espaço). Pra desfazer, apague este bloco. */
+  @media (min-width: 561px) and (max-width: 767px) {
+    .produtos-grid.grade[data-categoria="combinados"],
+    .produtos-grid.grade[data-categoria="pecas"] {
+      width: 436px;
+      max-width: calc(100vw - 40px);
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+</style>
+</head>
+<body>
+
+  <div class="loja-fechada-banner" id="lojaFechadaBanner" hidden>
+    <span id="lojaFechadaBannerTexto"></span>
+  </div>
+
+  <svg width="0" height="0" style="position:absolute">
+    <clipPath id="waveClip" clipPathUnits="objectBoundingBox">
+      <path d="M0,0 L1,0 L1,0.72
+               C0.92,0.9 0.83,0.55 0.75,0.72
+               C0.67,0.9 0.58,0.55 0.5,0.72
+               C0.42,0.9 0.33,0.55 0.25,0.72
+               C0.17,0.9 0.08,0.55 0,0.72 Z"/>
+    </clipPath>
+    <clipPath id="waveClipRodape" clipPathUnits="objectBoundingBox">
+      <path d="M0,0.15 C0.08,0.3 0.17,0 0.25,0.15
+               C0.33,0.3 0.42,0 0.5,0.15
+               C0.58,0.3 0.67,0 0.75,0.15
+               C0.83,0.3 0.92,0 1,0.15
+               L1,1 L0,1 Z"/>
+    </clipPath>
+  </svg>
+
+  <!-- HEADER -->
+  <header id="topo">
+   <div class="section-inner header-row">
+    <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="logo">
+      <div class="logo-placeholder"><img src="assets/imagens/logo.png" alt="Kishimoto Sushi"></div>
+    </div>
+
+    <div class="menu-wrap" id="menuWrap">
+      <nav>
+        <ul>
+          <li><a href="#topo">Início</a></li>
+          <li><a href="#destaques">Cardápio</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+      <button class="btn-header" id="btnCarrinho">Carrinho (0)</button>
+    </div>
+   </div>
+  </header>
+
+  <button class="cart-flutuante" id="cartFlutuante" aria-label="Abrir carrinho">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 3h2l.4 2M7 13h10l3-7H5.4M7 13L5.4 5M7 13l-2.3 4.6A1 1 0 005.6 19H17M17 19a2 2 0 100 4 2 2 0 000-4zM9 19a2 2 0 100 4 2 2 0 000-4z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="cart-flutuante-badge" id="cartFlutuanteBadge">0</span>
+  </button>
+
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-painel" id="cartPainel" aria-hidden="true">
+    <div class="cart-topo">
+      <h3>Seu carrinho</h3>
+      <button class="cart-fechar" id="cartFechar" aria-label="Fechar carrinho">&times;</button>
+
+    </div>
+
+    <div class="cart-lista" id="cartLista">
+      <p class="cart-vazio" id="cartVazio">Seu carrinho está vazio.</p>
+    </div>
+
+    <div class="cart-acoes">
+      <button class="cart-btn-secundario" id="cartDesfazer" disabled>Desfazer</button>
+      <button class="cart-btn-secundario" id="cartLimpar" disabled>Esvaziar carrinho</button>
+    </div>
+
+    <div class="cart-rodape">
+      <div class="cart-pagamento">
+        <span class="cart-pagamento-label">Forma de pagamento</span>
+        <div class="cart-pagamento-opcoes" id="cartPagamentoOpcoes">
+          <button type="button" class="pagamento-pill" data-forma="Pix">Pix</button>
+          <button type="button" class="pagamento-pill" data-forma="Dinheiro">Dinheiro</button>
+          <button type="button" class="pagamento-pill" data-forma="Cartão">Cartão</button>
+        </div>
+      </div>
+      <div class="cart-total">
+        <span>Total</span>
+        <strong id="cartTotal">R$ 0,00</strong>
+      </div>
+      <button class="cart-btn-finalizar" id="cartFinalizar" disabled>Finalizar Compra</button>
+    </div>
+  </aside>
+
+  <!-- MODAL DE FOTOS DO PRODUTO -->
+  <div class="img-modal" id="imgModal" aria-hidden="true">
+    <button class="img-modal-fechar" id="imgModalFechar" aria-label="Fechar">&times;</button>
+    <button class="img-modal-seta prev" id="imgModalPrev" aria-label="Foto anterior">&#10094;</button>
+    <div class="img-modal-conteudo">
+      <img id="imgModalImg" src="" alt="">
+      <div class="img-modal-legenda" id="imgModalLegenda"></div>
+    </div>
+    <button class="img-modal-seta next" id="imgModalNext" aria-label="Próxima foto">&#10095;</button>
+  </div>
+
+  <!-- POP-UP DE EXTRAS: abre ao clicar em "Adicionar" num combo -->
+  <div class="add-modal-overlay" id="addModalOverlay" aria-hidden="true">
+    <div class="add-modal" role="dialog" aria-modal="true" aria-labelledby="addModalTitulo">
+      <button class="add-modal-fechar" id="addModalFechar" aria-label="Fechar">&times;</button>
+      <h3 id="addModalTitulo"></h3>
+      <p class="add-modal-preco-base"></p>
+      <div class="add-modal-ingredientes" id="addModalIngredientes"></div>
+      <div class="add-modal-lista" id="addModalLista"></div>
+      <button class="add-modal-confirmar" id="addModalConfirmar">Continuar — <span id="addModalTotal">R$ 0,00</span></button>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero section-inner">
+    <div class="hero-card">
+
+      <div class="hero-content">
+        <p class="hero-script">Sushi delivery em Imbituba</p>
+        <h1 class="hero-titulo">KISHIMOTO<br>SUSHI</h1>
+        <span class="selo-delivery">🛵 Somente delivery</span>
+        <div class="hero-cta">
+          <a class="btn-hero" href="#produtos">Ver cardápio</a>
+          <a class="btn-hero ghost" href="https://api.whatsapp.com/send?phone=554896130041&text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20fazer%20um%20pedido%20%F0%9F%8D%A3" target="_blank" rel="noopener">Pedir no WhatsApp</a>
+        </div>
+        <div class="horario-funcionamento">
+          <div class="linha-horario">
+            <div class="dias" role="img" aria-label="Atendimento de terça a sábado"><span class="dia off" title="Segunda: sem atendimento">S</span><span class="dia" title="Terça">T</span><span class="dia" title="Quarta">Q</span><span class="dia" title="Quinta">Q</span><span class="dia" title="Sexta">S</span><span class="dia" title="Sábado">S</span><span class="dia off" title="Domingo: sem atendimento">D</span></div>
+            <div class="status is-closed" id="statusBadge"><span class="status-estado" id="statusEstado">Verificando</span><span class="status-info" id="statusText">horário…</span></div>
+          </div>
+          <div class="horario-detalhe">A partir das <strong class="h18">18h</strong> · enquanto durar a produção</div>
+        </div>
+      </div>
+
+      <!-- Vídeo do hero: coloque o arquivo em assets/videos/hero.mp4 (a logo aparece de reserva até ele carregar) -->
+      <div class="hero-image" id="heroSlideshow">
+        <img class="hero-fallback" src="assets/imagens/logo.png" alt="Kishimoto Sushi" onerror="this.style.display='none'">
+        <video src="assets/videos/hero.mp4" autoplay muted loop playsinline preload="auto" onerror="this.style.display='none'"></video>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PRODUTOS -->
+  <section id="produtos" class="section-inner">
+
+    <h2 class="produtos-titulo">Nosso cardápio</h2>
+
+    <div class="categorias-bolinhas" id="destaques">
+      <div class="categoria-bolinha" data-categoria-alvo="combinados" role="button" tabindex="0"><div class="categoria-bolinha-img" data-categoria-icone="combinados"></div><span>Combinados</span></div>
+      <div class="categoria-bolinha" data-categoria-alvo="pecas" role="button" tabindex="0"><div class="categoria-bolinha-img" data-categoria-icone="pecas"></div><span>Peças unidade</span></div>
+    </div>
+
+    <h3 class="categoria-titulo" id="categoria-combinados">Combinados:</h3>
+    <p class="obs-combo"><strong>OBS:</strong> Cada combo acompanha 4 sachês de shoyo, 2 tarês, gengibre, wasabi e 2 hashis. Caso necessite, cobramos adicional.</p>
+    <div class="produtos-grid grade" data-categoria="combinados"></div>
+
+    <h3 class="categoria-titulo" id="categoria-pecas">Peças Unidade:</h3>
+    <div class="produtos-grid grade" data-categoria="pecas"></div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-body">
+      <div id="contato" class="section-inner footer-conteudo">
+        <div class="footer-logo"><img src="assets/imagens/logo.png" alt="Kishimoto Sushi"></div>
+
+        <div class="footer-info">
+          <strong>Imbituba - SC · Somente delivery</strong>
+          <span>Terça a sábado: a partir das 18h, enquanto durar a produção</span>
+        </div>
+
+        <div class="footer-social">
+          <div class="footer-social-icones">
+            <a href="https://www.instagram.com/kishimotosushi/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3.05.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.07.06 1.42.06 4.12s-.01 3.05-.06 4.12c-.05 1.06-.22 1.79-.47 2.43-.26.66-.6 1.22-1.15 1.77-.55.55-1.11.9-1.77 1.15-.64.25-1.37.42-2.43.47-1.07.05-1.42.06-4.12.06s-3.05-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47-.66-.26-1.22-.6-1.77-1.15-.55-.55-.9-1.11-1.15-1.77-.25-.64-.42-1.37-.47-2.43C2.01 15.05 2 14.7 2 12s.01-3.05.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77.55-.55 1.11-.9 1.77-1.15.64-.25 1.37-.42 2.43-.47C8.95 2.01 9.3 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm5.4-8.4a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"/></svg>
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=554896130041&text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20fazer%20um%20pedido%20%F0%9F%8D%A3" target="_blank" rel="noopener" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24"><path d="M12.02 2C6.5 2 2.03 6.48 2.03 12c0 1.77.46 3.44 1.27 4.89L2 22l5.25-1.27a9.9 9.9 0 004.77 1.22h.01c5.52 0 10-4.48 10-10S17.54 2 12.02 2zm0 18.1c-1.5 0-2.95-.4-4.2-1.15l-.3-.18-3.12.76.83-3.04-.2-.31a8.1 8.1 0 01-1.24-4.32c0-4.5 3.66-8.16 8.16-8.16s8.16 3.66 8.16 8.16-3.66 8.24-8.29 8.24zm4.52-6.1c-.25-.13-1.47-.72-1.7-.8-.23-.08-.4-.13-.56.13-.17.25-.65.8-.8.97-.15.17-.3.19-.55.06-.25-.13-1.06-.39-2.02-1.24-.75-.66-1.25-1.48-1.4-1.73-.15-.25-.02-.39.11-.51.11-.11.25-.3.37-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.08 0 1.23.9 2.42 1.02 2.58.13.17 1.77 2.7 4.28 3.79.6.26 1.06.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-copy">
+        <div class="section-inner footer-copy-linha">
+          <span class="footer-rights">© 2026 Kishimoto Sushi. Todos os direitos reservados.</span>
+          <ul class="footer-nav">
+            <li><a href="#topo">Início</a></li>
+            <li><a href="#destaques">Cardápio</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+          <span class="footer-dev">Website desenvolvido por <a href="https://amplifying.com.br/servicos" target="_blank" rel="noopener">AMPLIFYING</a></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ===== Carrinho =====
+    let carrinho = []; // [{ nome, preco, qtd }]
+    let historico = []; // pilha de estados anteriores, pra função "Desfazer"
+
+    const btnCarrinho = document.getElementById('btnCarrinho');
+    const cartFlutuante = document.getElementById('cartFlutuante');
+    const cartFlutuanteBadge = document.getElementById('cartFlutuanteBadge');
+    const cartOverlay = document.getElementById('cartOverlay');
+    const cartPainel = document.getElementById('cartPainel');
+    const cartFechar = document.getElementById('cartFechar');
+    const cartLista = document.getElementById('cartLista');
+    const cartVazio = document.getElementById('cartVazio');
+    const cartTotal = document.getElementById('cartTotal');
+    const cartDesfazer = document.getElementById('cartDesfazer');
+    const cartLimpar = document.getElementById('cartLimpar');
+    const cartFinalizar = document.getElementById('cartFinalizar');
+    const cartPagamentoOpcoes = document.getElementById('cartPagamentoOpcoes');
+
+    let formaPagamento = null;
+
+    cartPagamentoOpcoes.querySelectorAll('.pagamento-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        formaPagamento = pill.dataset.forma;
+        cartPagamentoOpcoes.querySelectorAll('.pagamento-pill').forEach(p => p.classList.remove('selecionada'));
+        pill.classList.add('selecionada');
+      });
+    });
+
+    function formatarPreco(valor) {
+      return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+
+    function salvarHistorico() {
+      // guarda uma cópia do estado atual antes de qualquer mudança
+      historico.push(JSON.parse(JSON.stringify(carrinho)));
+      cartDesfazer.disabled = false;
+    }
+
+    function totalItens() {
+      return carrinho.reduce((soma, item) => soma + item.qtd, 0);
+    }
+
+    function totalPreco() {
+      return carrinho.reduce((soma, item) => soma + item.qtd * item.preco, 0);
+    }
+
+    function atualizarBotaoCarrinho() {
+      btnCarrinho.textContent = `Carrinho (${totalItens()})`;
+      cartFlutuanteBadge.textContent = totalItens();
+    }
+
+    function atualizarBotaoFinalizar() {
+      const vazio = carrinho.length === 0;
+      cartFinalizar.disabled = vazio;
+      if (!vazio && statusLojaAtual && !statusLojaAtual.aberta) {
+        cartFinalizar.classList.add('fechado');
+        cartFinalizar.textContent = 'Loja fechada no momento';
+      } else {
+        cartFinalizar.classList.remove('fechado');
+        cartFinalizar.textContent = 'Finalizar Compra';
+      }
+    }
+
+    function renderizarCarrinho() {
+      atualizarBotaoCarrinho();
+      cartTotal.textContent = formatarPreco(totalPreco());
+
+      const vazio = carrinho.length === 0;
+      cartLimpar.disabled = vazio;
+      cartVazio.style.display = vazio ? 'block' : 'none';
+      atualizarBotaoFinalizar();
+
+      cartLista.querySelectorAll('.cart-item').forEach(el => el.remove());
+
+      carrinho.forEach((item, index) => {
+        const el = document.createElement('div');
+        el.className = 'cart-item';
+        el.innerHTML = `
+          <div class="cart-item-info">
+            <span class="cart-item-nome">${item.nome}</span>
+            <span class="cart-item-preco">${formatarPreco(item.preco)} ${item.qtd > 1 ? `<span class="cart-item-qtd">x${item.qtd}</span>` : ''}</span>
+          </div>
+          <button class="cart-item-remover" aria-label="Remover ${item.nome}" data-index="${index}">&times;</button>
+        `;
+        cartLista.appendChild(el);
+      });
+
+      cartLista.querySelectorAll('.cart-item-remover').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const idx = parseInt(btn.dataset.index);
+          salvarHistorico();
+          if (carrinho[idx].qtd > 1) {
+            carrinho[idx].qtd -= 1;
+          } else {
+            carrinho.splice(idx, 1);
+          }
+          renderizarCarrinho();
+        });
+      });
+    }
+
+    function abrirCarrinho() {
+      cartOverlay.classList.add('aberto');
+      cartPainel.classList.add('aberto');
+      cartPainel.setAttribute('aria-hidden', 'false');
+      cartFlutuante.classList.remove('visivel');
+    }
+
+    function fecharCarrinho() {
+      cartOverlay.classList.remove('aberto');
+      cartPainel.classList.remove('aberto');
+      cartPainel.setAttribute('aria-hidden', 'true');
+    }
+
+    btnCarrinho.addEventListener('click', abrirCarrinho);
+    cartFlutuante.addEventListener('click', abrirCarrinho);
+    cartFechar.addEventListener('click', fecharCarrinho);
+    cartOverlay.addEventListener('click', fecharCarrinho);
+
+    cartDesfazer.addEventListener('click', () => {
+      if (historico.length === 0) return;
+      carrinho = historico.pop();
+      cartDesfazer.disabled = historico.length === 0;
+      renderizarCarrinho();
+    });
+
+    cartLimpar.addEventListener('click', () => {
+      if (carrinho.length === 0) return;
+      salvarHistorico();
+      carrinho = [];
+      formaPagamento = null;
+      cartPagamentoOpcoes.querySelectorAll('.pagamento-pill').forEach(p => p.classList.remove('selecionada'));
+      renderizarCarrinho();
+    });
+
+    // ===== Status "Estamos em funcionamento" / "Estamos fechados" =====
+    // Terça a domingo, das 19:30 às 00:00 (fecha à meia-noite). Segunda fechado.
+    // Horários em minutos desde 00:00 pra facilitar comparação (0 = domingo ... 6 = sábado).
+    const HORARIO_FUNCIONAMENTO = {
+      0: [],              // domingo - sem atendimento
+      1: [],              // segunda - sem atendimento
+      2: [[1080, 1440]], // terça a sábado: a partir das 18h (enquanto durar a produção)
+      3: [[1080, 1440]],
+      4: [[1080, 1440]],
+      5: [[1080, 1440]],
+      6: [[1080, 1440]],
+    };
+    const NOMES_DIAS = ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'];
+
+    function paraHHMM(mins) {
+      const h = Math.floor(mins / 60).toString().padStart(2, '0');
+      const m = (mins % 60).toString().padStart(2, '0');
+      return `${h}:${m}`;
+    }
+
+    // Função central: calcula se a loja está aberta agora e monta as mensagens
+    // usadas tanto no selo do topo, quanto no banner e no bloqueio do carrinho.
+    function obterStatusLoja() {
+      const agora = new Date();
+      const dia = agora.getDay();
+      const minutosAgora = agora.getHours() * 60 + agora.getMinutes();
+      const faixasHoje = HORARIO_FUNCIONAMENTO[dia] || [];
+
+      const faixaAtiva = faixasHoje.find(([inicio, fim]) => minutosAgora >= inicio && minutosAgora < fim);
+
+      if (faixaAtiva) {
+        return {
+          aberta: true,
+          estado: 'Aberto', info: 'Peça agora',
+          mensagemCurta: `Estamos em funcionamento · Fecha às ${paraHHMM(faixaAtiva[1] % 1440)}`,
+          mensagemAviso: null,
+        };
+      }
+
+      // Procura a próxima abertura: ainda hoje, ou nos próximos dias.
+      let proximaAbertura = null;
+      const proximaHoje = faixasHoje.find(([inicio]) => minutosAgora < inicio);
+      if (proximaHoje) {
+        proximaAbertura = { rotulo: 'hoje', horario: paraHHMM(proximaHoje[0]) };
+      } else {
+        for (let i = 1; i <= 7; i++) {
+          const proximoDia = (dia + i) % 7;
+          const faixas = HORARIO_FUNCIONAMENTO[proximoDia];
+          if (faixas && faixas.length) {
+            const rotulo = i === 1 ? 'amanhã' : NOMES_DIAS[proximoDia];
+            proximaAbertura = { rotulo, horario: paraHHMM(faixas[0][0]) };
+            break;
+          }
+        }
+      }
+
+      const trechoAbertura = proximaAbertura
+        ? (proximaAbertura.rotulo === 'hoje'
+          ? `Abre às ${proximaAbertura.horario}`
+          : `Abre ${proximaAbertura.rotulo} às ${proximaAbertura.horario}`)
+        : 'Confira nossos horários de funcionamento';
+
+      const hh = proximaAbertura ? proximaAbertura.horario.replace(':00', 'h') : '';
+      const infoFechado = proximaAbertura ? `Abre ${proximaAbertura.rotulo.replace('-feira', '')} · ${hh}` : 'Veja os horários';
+
+      return {
+        aberta: false,
+        estado: 'Fechado', info: infoFechado,
+        mensagemCurta: `Estamos fechados · ${trechoAbertura}`,
+        mensagemAviso: `Estamos fechados no momento. ${trechoAbertura}.`,
+      };
+    }
+
+    let statusLojaAtual = obterStatusLoja();
+
+    function atualizarStatusFuncionamento() {
+      const badge = document.getElementById('statusBadge');
+      const texto = document.getElementById('statusText');
+      const banner = document.getElementById('lojaFechadaBanner');
+      const bannerTexto = document.getElementById('lojaFechadaBannerTexto');
+
+      statusLojaAtual = obterStatusLoja();
+
+      if (badge && texto) {
+        badge.classList.toggle('is-closed', !statusLojaAtual.aberta);
+        const estadoEl = document.getElementById('statusEstado');
+        if (estadoEl) estadoEl.textContent = statusLojaAtual.estado;
+        texto.textContent = statusLojaAtual.info;
+      }
+
+      if (banner && bannerTexto) {
+        banner.hidden = statusLojaAtual.aberta;
+        if (!statusLojaAtual.aberta) {
+          bannerTexto.textContent = `🔴 ${statusLojaAtual.mensagemAviso} Você pode navegar o cardápio, mas só é possível enviar o pedido durante o funcionamento.`;
+        }
+      }
+
+      if (typeof atualizarBotaoFinalizar === 'function') atualizarBotaoFinalizar();
+    }
+
+    atualizarStatusFuncionamento();
+    setInterval(atualizarStatusFuncionamento, 60000);
+
+    cartFinalizar.addEventListener('click', () => {
+      if (carrinho.length === 0) return;
+
+      // Não deixa enviar pedido pelo WhatsApp fora do horário de funcionamento.
+      if (!statusLojaAtual.aberta) {
+        alert(`${statusLojaAtual.mensagemAviso}\n\nSeu carrinho continua salvo — é só voltar aqui quando a gente abrir.`);
+        return;
+      }
+
+      if (!formaPagamento) {
+        cartPagamentoOpcoes.classList.add('erro');
+        cartPagamentoOpcoes.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      cartPagamentoOpcoes.classList.remove('erro');
+
+      const numeroWhats = '554896130041';
+
+      let mensagem = 'Olá! Gostaria de fazer o seguinte pedido:\n\n';
+      carrinho.forEach(item => {
+        const subtotal = item.qtd * item.preco;
+        mensagem += `• ${item.qtd}x ${item.nome} - R$ ${formatarPreco(subtotal)}\n`;
+      });
+      mensagem += `\nTotal: R$ ${formatarPreco(totalPreco())}`;
+      mensagem += `\nForma de pagamento: ${formaPagamento}`;
+
+      const url = `https://api.whatsapp.com/send?phone=${numeroWhats}&text=${encodeURIComponent(mensagem)}`;
+      window.open(url, '_blank');
+    });
+
+    renderizarCarrinho();
+
+    // Mostra o carrinho flutuante quando a topbar sai de vista rolando a página
+    function aoRolar() {
+      const headerAltura = document.querySelector('header').offsetHeight;
+      if (window.scrollY > headerAltura) {
+        cartFlutuante.classList.add('visivel');
+      } else {
+        cartFlutuante.classList.remove('visivel');
+      }
+    }
+
+    window.addEventListener('scroll', aoRolar, { passive: true });
+
+    // ===== Modal de adicionais (cachorros-quentes) =====
+    const addModalOverlay = document.getElementById('addModalOverlay');
+    const addModalTitulo = document.getElementById('addModalTitulo');
+    const addModalPrecoBase = document.querySelector('.add-modal-preco-base');
+    const addModalIngredientes = document.getElementById('addModalIngredientes');
+    const addModalLista = document.getElementById('addModalLista');
+    const addModalConfirmar = document.getElementById('addModalConfirmar');
+    const addModalFechar = document.getElementById('addModalFechar');
+    const addModalTotal = document.getElementById('addModalTotal');
+
+    let produtoModalAtual = null;
+
+    function atualizarTotalModal() {
+      const itens = addModalLista.querySelectorAll('.add-modal-item');
+      let total = produtoModalAtual.preco;
+      itens.forEach(item => {
+        const qtd = parseInt(item.dataset.qtd, 10) || 0;
+        const preco = parseFloat(item.dataset.preco);
+        total += qtd * preco;
+      });
+      addModalTotal.textContent = `R$ ${formatarPreco(total)}`;
+    }
+
+    function abrirModalAdicionais(produto) {
+      produtoModalAtual = produto;
+      addModalTitulo.textContent = produto.nome;
+
+      // Modal "opções": não tem preço base fixo, o preço vem de cada opção escolhida.
+      const ehModalOpcoes = produto.tipoModal === 'opcoes';
+      const listaDoModal = ehModalOpcoes ? opcoesAgua : adicionaisDisponiveis;
+      addModalPrecoBase.textContent = ehModalOpcoes
+        ? 'Escolha a quantidade de cada opção'
+        : `Quer algum extra? Se não, é só continuar sem nenhum.`;
+
+      // Ingredientes que dá pra tirar (ex.: milho, ervilha) — só existe pro Clássico.
+      // Todos vêm marcados por padrão; desmarcar = "sem aquele ingrediente".
+      if (produto.ingredientes && produto.ingredientes.length) {
+        addModalIngredientes.innerHTML = `
+          <p class="add-modal-ingredientes-titulo">Ingredientes</p>
+          ${produto.ingredientes.map((ing, i) => `
+            <label class="add-modal-ingrediente" data-ingrediente="${ing}">
+              <input type="checkbox" checked data-ingrediente-checkbox id="ingrediente-${i}">
+              ${ing}
+            </label>
+          `).join('')}
+        `;
+        addModalIngredientes.querySelectorAll('.add-modal-ingrediente').forEach(label => {
+          const checkbox = label.querySelector('input');
+          checkbox.addEventListener('change', () => {
+            label.classList.toggle('desmarcado', !checkbox.checked);
+          });
+        });
+      } else {
+        addModalIngredientes.innerHTML = '';
+      }
+
+      addModalLista.innerHTML = listaDoModal.map(ad => `
+        <div class="add-modal-item" data-id="${ad.id}" data-nome="${ad.nome}" data-preco="${ad.preco.toFixed(2)}" data-qtd="0">
+          <span class="add-modal-item-nome">
+            ${ad.nome}
+            <span class="add-modal-item-preco">+ R$ ${formatarPreco(ad.preco)} cada</span>
+          </span>
+          <span class="add-modal-qtd">
+            <button type="button" class="add-modal-qtd-btn menos" aria-label="Diminuir ${ad.nome}">−</button>
+            <span class="add-modal-qtd-valor">0</span>
+            <button type="button" class="add-modal-qtd-btn mais" aria-label="Aumentar ${ad.nome}">+</button>
+          </span>
+        </div>
+      `).join('');
+
+      addModalLista.querySelectorAll('.add-modal-item').forEach(item => {
+        const valorEl = item.querySelector('.add-modal-qtd-valor');
+        const btnMenos = item.querySelector('.menos');
+        const btnMais = item.querySelector('.mais');
+
+        function setQtd(nova) {
+          const qtd = Math.max(0, nova);
+          item.dataset.qtd = qtd;
+          valorEl.textContent = qtd;
+          atualizarTotalModal();
+        }
+
+        btnMais.addEventListener('click', () => setQtd((parseInt(item.dataset.qtd, 10) || 0) + 1));
+        btnMenos.addEventListener('click', () => setQtd((parseInt(item.dataset.qtd, 10) || 0) - 1));
+      });
+
+      atualizarTotalModal();
+      addModalOverlay.classList.add('aberto');
+      addModalOverlay.setAttribute('aria-hidden', 'false');
+    }
+
+    function fecharModalAdicionais() {
+      addModalOverlay.classList.remove('aberto');
+      addModalOverlay.setAttribute('aria-hidden', 'true');
+      produtoModalAtual = null;
+    }
+
+    addModalFechar.addEventListener('click', fecharModalAdicionais);
+    addModalOverlay.addEventListener('click', (e) => {
+      if (e.target === addModalOverlay) fecharModalAdicionais();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && addModalOverlay.classList.contains('aberto')) fecharModalAdicionais();
+    });
+
+    addModalConfirmar.addEventListener('click', () => {
+      const itensComQtd = Array.from(addModalLista.querySelectorAll('.add-modal-item'))
+        .map(item => ({
+          nome: item.dataset.nome,
+          preco: parseFloat(item.dataset.preco),
+          qtd: parseInt(item.dataset.qtd, 10) || 0
+        }))
+        .filter(item => item.qtd > 0);
+
+      const ehModalOpcoes = produtoModalAtual.tipoModal === 'opcoes';
+
+      // Modal "opções" (ex.: água com/sem gás): não tem preço base, então exige
+      // pelo menos uma opção escolhida e cada opção vira um item próprio no carrinho.
+      if (ehModalOpcoes && itensComQtd.length === 0) {
+        return;
+      }
+
+      salvarHistorico();
+
+      if (ehModalOpcoes) {
+        itensComQtd.forEach(item => {
+          const nomeFinal = `${produtoModalAtual.nome} - ${item.nome}`;
+          const existente = carrinho.find(c => c.nome === nomeFinal);
+          if (existente) {
+            existente.qtd += item.qtd;
+          } else {
+            carrinho.push({ nome: nomeFinal, preco: item.preco, qtd: item.qtd });
+          }
+        });
+      } else {
+        const nomesAdicionais = itensComQtd.map(item => item.qtd > 1 ? `${item.nome} x${item.qtd}` : item.nome);
+        const totalAdicionais = itensComQtd.reduce((soma, item) => soma + item.preco * item.qtd, 0);
+
+        // Ingredientes desmarcados (ex.: "sem ervilha, sem maionese").
+        const ingredientesRemovidos = Array.from(
+          addModalIngredientes.querySelectorAll('input[data-ingrediente-checkbox]:not(:checked)')
+        ).map(chk => chk.closest('.add-modal-ingrediente').dataset.ingrediente);
+
+        let nomeFinal = produtoModalAtual.nome;
+        if (ingredientesRemovidos.length) {
+          nomeFinal += ` (${ingredientesRemovidos.map(ing => `sem ${ing.toLowerCase()}`).join(', ')})`;
+        }
+        if (nomesAdicionais.length) {
+          nomeFinal += ` com adicional de (${nomesAdicionais.join(', ')})`;
+        }
+        const precoFinal = produtoModalAtual.preco + totalAdicionais;
+
+        const existente = carrinho.find(item => item.nome === nomeFinal);
+        if (existente) {
+          existente.qtd += 1;
+        } else {
+          carrinho.push({ nome: nomeFinal, preco: precoFinal, qtd: 1 });
+        }
+      }
+
+      renderizarCarrinho();
+      fecharModalAdicionais();
+    });
+
+    // Adicionar produto ao carrinho
+    // Delegação de evento no document: funciona mesmo com os cards
+    // sendo criados dinamicamente pelo script de renderização de produtos.
+    // Itens com adicionais (temAdicionais) abrem o modal em vez de ir direto pro carrinho.
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.btn-add');
+      if (!btn) return;
+
+      const nome = btn.dataset.nome;
+      const preco = parseFloat(btn.dataset.preco);
+      const temAdicionais = btn.dataset.temAdicionais === '1';
+      const tipoModal = btn.dataset.tipoModal || '';
+      const idProduto = btn.dataset.id;
+
+      if (temAdicionais) {
+        const produtoCompleto = Object.values(produtosPorCategoria).flat()
+          .find(p => (p.id || p.nome) === idProduto);
+        abrirModalAdicionais({
+          nome, preco, tipoModal,
+          ingredientes: (produtoCompleto && produtoCompleto.ingredientes) || null
+        });
+        return;
+      }
+
+      salvarHistorico();
+
+      const existente = carrinho.find(item => item.nome === nome);
+      if (existente) {
+        existente.qtd += 1;
+      } else {
+        carrinho.push({ nome, preco, qtd: 1 });
+      }
+
+      renderizarCarrinho();
+
+      // feedback rápido no próprio botão
+      const textoOriginal = btn.textContent;
+      btn.textContent = 'Adicionado!';
+      setTimeout(() => { btn.textContent = textoOriginal; }, 1000);
+    });
+
+    // Menu hambúrguer (mobile)
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const menuWrap = document.getElementById('menuWrap');
+
+    hamburgerBtn.addEventListener('click', () => {
+      const aberto = menuWrap.classList.toggle('aberto');
+      hamburgerBtn.setAttribute('aria-expanded', aberto);
+    });
+
+    // Fecha o menu ao clicar em um link
+    menuWrap.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('click', () => {
+        menuWrap.classList.remove('aberto');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+
+  <script>
+    // ===== DADOS DOS PRODUTOS =====
+    // Catálogo do Kishimoto Sushi. Pra adicionar/editar/remover um item, mexa só nesta lista.
+    // Pra colocar foto: adicione  imagemUrl: "assets/imagens/combo1.jpg"  no item.
+    const produtosPorCategoria = {
+      combinados: [
+        { id: "combo1", nome: "Combo 01", pecas: "40 peças", preco: 64.90, temAdicionais: true, imagemUrl: "assets/imagens/combo1.jpg",
+          itens: ["06 Sashimis", "05 Uramaki Kani", "05 Hossomaki Fila", "10 Hot Rolls (Fila)", "02 Nigiri", "02 Joy", "05 Hossomaki Pepino", "05 Uramaki Califórnia"] },
+        { id: "combo2", nome: "Combo 02", pecas: "50 peças", preco: 84.90, temAdicionais: true, imagemUrl: "assets/imagens/combo2.jpg",
+          itens: ["06 Sashimis", "05 Uramaki Kani", "05 Uramaki Skin", "05 Hossomaki Fila", "05 Hossomaki Pepino", "10 Hot Rolls (Fila)", "02 Nigiri", "02 Joy", "05 Uramaki Fila", "05 Uramaki Califórnia", "01 Temaki Skin"] },
+        { id: "combo3", nome: "Combo 03", pecas: "60 peças", preco: 94.90, temAdicionais: true, imagemUrl: "assets/imagens/combo3.jpg",
+          itens: ["06 Sashimis", "05 Uramaki Kani", "05 Hossomaki Fila", "05 Hossomaki Pepino", "10 Hot Rolls (Fila)", "02 Nigiri", "02 Joy", "10 Uramaki Fila", "05 Uramaki Skin", "05 Uramaki Califórnia", "05 Pastinha de Salmão", "02 Temakis Fila"] },
+        { id: "combo4", nome: "Combo 04", pecas: "80 peças", preco: 119.90, temAdicionais: true, imagemUrl: "assets/imagens/combo4.jpg",
+          itens: ["06 Sashimis", "02 Joy", "02 Nigiri", "05 Hossomaki Fila", "05 Hossomaki Pepino", "10 Uramaki Fila", "20 Hot Rolls (Fila)", "05 Uramaki Califórnia", "10 Uramaki Skin", "10 Uramaki Kani", "05 Pastinha de Salmão"] },
+        { id: "combo5", nome: "Combo 05", pecas: "40 peças · só salmão", preco: 79.90, temAdicionais: true, imagemUrl: "assets/imagens/combo5.jpg",
+          itens: ["06 Sashimis", "02 Joy", "02 Nigiri", "10 Hossomaki Fila", "10 Uramaki Fila", "10 Hot Rolls (Fila)", "01 Temakinho Fila"] },
+
+        // ===== PRÉ-ESTRUTURA: combos do cardápio do WhatsApp, faltam itens, nº de peças e foto =====
+        // Pra completar: preencha "itens" (lista do que vem), "pecas" (ex.: "40 peças") e adicione
+        // imagemUrl: "assets/imagens/arquivo.jpg". Enquanto estiverem vazios, o card mostra "em breve".
+        { id: "combo-hot", nome: "Combo Hot", pecas: "30 peças + 1 temaki", preco: 69.90, temAdicionais: true, imagemUrl: "assets/imagens/hot.jpg",
+          itens: ["30 Hot Rolls", "01 Temaki Hot"] },
+        { id: "combo-hot-vip", nome: "Combo Hot Vip", pecas: "40 peças + 2 temakis", preco: 99.90, temAdicionais: true, imagemUrl: "assets/imagens/hotvip.jpg",
+          itens: ["40 peças Hot", "02 Temakis Hot"] },
+        { id: "combo-salmao-vip", nome: "Combo Salmão Vip", pecas: "50 peças + 2 temakis", preco: 99.90, temAdicionais: true, imagemUrl: "assets/imagens/salmaovip.jpg",
+          itens: [] },
+      ],
+      pecas: [
+        { id: "sashimi", nome: "Sashimi", descricao: "", imagemUrl: "assets/imagens/sashimi.jpg", preco: 4.50 },
+        { id: "nigiri", nome: "Nigiri Skin, Kani ou Fila", descricao: "", imagemUrl: "assets/imagens/nigiri.jpg", preco: 3.50 },
+        { id: "ura-fila", nome: "Uramaki Filadélfia", descricao: "", imagemUrl: "assets/imagens/urafila.jpg", preco: 3.00 },
+        { id: "ura-outros", nome: "Uramaki Skin, Kani, Pastinha ou Califórnia", descricao: "", imagemUrl: "assets/imagens/uraoutros.jpg", preco: 2.50 },
+        { id: "joy", nome: "Joys diversos", descricao: "", imagemUrl: "assets/imagens/joy.jpg", preco: 4.00 },
+        { id: "hot-rolls", nome: "Hot Rolls Fila · 10 peças", descricao: "", imagemUrl: "assets/imagens/hotrolls.jpg", preco: 24.90 },
+        { id: "temaki-skin", nome: "Temaki Skin", descricao: "", imagemUrl: "assets/imagens/temakiskin.jpg", preco: 19.90 },
+        { id: "temaki-hot", nome: "Temaki Hot", descricao: "", imagemUrl: "assets/imagens/temakihot.jpg", preco: 24.90 },
+        { id: "temaki-fila", nome: "Temaki Filadélfia", descricao: "", imagemUrl: "assets/imagens/temakifila.jpg", preco: 24.90 },
+        { id: "sunomono", nome: "Sunomono", descricao: "", imagemUrl: "assets/imagens/sunomono.jpg", preco: 5.00 },
+      ],
+    };
+
+    // Extras que aparecem ao clicar em "Adicionar" num combo.
+    const adicionaisDisponiveis = [
+      { id: "gengibre", nome: "Gengibre extra 30 g", preco: 3.00 },
+      { id: "shoyo", nome: "Shoyo/Tarê adicional (sachê)", preco: 1.00 },
+      { id: "hashi", nome: "Hashi/Adaptador adicional", preco: 1.00 },
+      { id: "wasabi", nome: "Wasabi extra, Tarê ou Geleia de Pimenta 30 g", preco: 3.00 },
+    ];
+    const opcoesAgua = [];
+
+
+    // Alinha dias + status com os botões: 2 colunas quando os botões estão lado a lado, empilhado quando não
+    function sincronizarColunasHorario() {
+      const botoes = document.querySelectorAll('.hero-cta .btn-hero');
+      const linha = document.querySelector('.linha-horario');
+      if (botoes.length < 2 || !linha) return;
+      linha.classList.toggle('duas-colunas', Math.abs(botoes[0].offsetTop - botoes[1].offsetTop) < 4);
+      // segurança: se a fita não couber na metade, empilha em vez de cortar o texto
+      if (linha.classList.contains('duas-colunas')) {
+        const st = linha.querySelector('.status');
+        if (st && [...st.children].some(c => c.scrollWidth > c.clientWidth + 1)) linha.classList.remove('duas-colunas');
+      }
+    }
+    window.addEventListener('resize', sincronizarColunasHorario);
+    window.addEventListener('load', sincronizarColunasHorario);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(sincronizarColunasHorario);
+    sincronizarColunasHorario();
+
+    function formatarPreco(valor) {
+      return valor.toFixed(2).replace('.', ',');
+    }
+
+    // ===== Bolinhas de categoria: clicar leva até a seção correspondente =====
+    document.querySelectorAll('.categoria-bolinha[data-categoria-alvo]').forEach(bolinha => {
+      function irParaCategoria() {
+        const alvo = document.getElementById(`categoria-${bolinha.dataset.categoriaAlvo}`);
+        if (alvo) alvo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      bolinha.addEventListener('click', irParaCategoria);
+      bolinha.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          irParaCategoria();
+        }
+      });
+    });
+
+    // ===== Bolinhas Combinados/Peças: foto aleatória da própria categoria =====
+    // Sorteia uma foto a cada carregamento. Se a foto falhar, tenta outra; se nenhuma carregar, fica o emoji.
+    document.querySelectorAll('.categoria-bolinha-img[data-categoria-icone]').forEach(el => {
+      const lista = produtosPorCategoria[el.dataset.categoriaIcone] || [];
+      const fotos = lista.map(p => p.imagemUrl || (p.imagens && p.imagens[0])).filter(Boolean);
+      for (let i = fotos.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [fotos[i], fotos[j]] = [fotos[j], fotos[i]];
+      }
+      (function tentar(i) {
+        if (i >= fotos.length) return;
+        const img = new Image();
+        img.onload = () => {
+          el.style.backgroundImage = `url('${fotos[i]}')`;
+          el.classList.add('com-foto');
+        };
+        img.onerror = () => tentar(i + 1);
+        img.src = fotos[i];
+      })(0);
+    });
+
+    // ===== Slideshow das fotos do produto + modal de visualização =====
+    // Cada produto pode ter mais de uma foto: basta usar "imagens: [url1, url2, ...]"
+    // no lugar de "imagemUrl" lá em cima nos dados do produto. Com 2+ fotos, o card
+    // troca de foto sozinho a cada 3s (fade suave); com 1 foto só, fica parado.
+    const todosSliders = [];
+    const ATRASO_ENTRE_CARDS = 1800; // ms de defasagem entre o início de cada card
+
+    function iniciarAutoplaySlider(slider, comAtraso) {
+      pararAutoplaySlider(slider);
+      if (slider.total < 2) return;
+
+      const atraso = comAtraso ? (slider.atrasoInicial || 0) : 0;
+
+      slider.timeoutInicial = setTimeout(() => {
+        avancarSlider(slider);
+        slider.timer = setInterval(() => avancarSlider(slider), 3000);
+      }, atraso);
+    }
+
+    function pararAutoplaySlider(slider) {
+      if (slider.timeoutInicial) {
+        clearTimeout(slider.timeoutInicial);
+        slider.timeoutInicial = null;
+      }
+      if (slider.timer) {
+        clearInterval(slider.timer);
+        slider.timer = null;
+      }
+    }
+
+    function avancarSlider(slider) {
+      const slides = slider.container.querySelectorAll('.produto-img-slide');
+      const dots = slider.container.querySelectorAll('.dot');
+      slides[slider.indice].classList.remove('ativa');
+      if (dots[slider.indice]) dots[slider.indice].classList.remove('ativo');
+      slider.indice = (slider.indice + 1) % slider.total;
+      slides[slider.indice].classList.add('ativa');
+      if (dots[slider.indice]) dots[slider.indice].classList.add('ativo');
+      slider.container.dataset.indiceAtual = slider.indice;
+    }
+
+    function pausarTodosSliders() {
+      todosSliders.forEach(pararAutoplaySlider);
+    }
+
+    function retomarTodosSliders() {
+      todosSliders.forEach(slider => iniciarAutoplaySlider(slider, false));
+    }
+
+    function criarCardProduto(produto) {
+      const card = document.createElement('div');
+      card.className = 'produto-card';
+
+      const imagens = (produto.imagens && produto.imagens.length)
+        ? produto.imagens
+        : (produto.imagemUrl ? [produto.imagemUrl] : []);
+
+      const temFoto = imagens.length > 0;
+
+      const slidesHtml = temFoto
+        ? imagens.map((src, i) => `<img class="produto-img-slide${i === 0 ? ' ativa' : ''}" src="${src}" alt="${produto.nome}">`).join('')
+        : `<div class="produto-img-placeholder" aria-hidden="true">🍣</div>`;
+
+      const dotsHtml = imagens.length > 1
+        ? `<div class="produto-img-dots">${imagens.map((_, i) => `<span class="dot${i === 0 ? ' ativo' : ''}"></span>`).join('')}</div>`
+        : '';
+
+      const descricaoHtml = produto.descricao ? `<p>${produto.descricao}</p>` : '';
+      const textoBotao = produto.temAdicionais ? 'Adicionar' : 'Adicionar';
+
+      card.innerHTML = `
+        <div class="produto-img${temFoto ? '' : ' sem-foto'}" role="${temFoto ? 'button' : 'presentation'}" ${temFoto ? 'tabindex="0"' : ''} aria-label="Ver fotos de ${produto.nome}" data-indice-atual="0">
+          ${slidesHtml}
+          ${dotsHtml}
+        </div>
+        <div class="produto-info">
+          <h3>${produto.nome}</h3>
+          ${descricaoHtml}
+          <div class="produto-preco">
+            <span>R$ ${formatarPreco(produto.preco)}</span>
+            <button class="btn-add" data-id="${produto.id || produto.nome}" data-nome="${produto.nome}" data-preco="${produto.preco.toFixed(2)}" data-tem-adicionais="${produto.temAdicionais ? '1' : '0'}" data-tipo-modal="${produto.tipoModal || ''}">${textoBotao}</button>
+          </div>
+        </div>
+      `;
+
+      const imgContainer = card.querySelector('.produto-img');
+
+      if (temFoto && imagens.length > 1) {
+        const slider = {
+          container: imgContainer,
+          total: imagens.length,
+          indice: 0,
+          timer: null,
+          timeoutInicial: null,
+          atrasoInicial: todosSliders.length * ATRASO_ENTRE_CARDS
+        };
+        todosSliders.push(slider);
+        iniciarAutoplaySlider(slider, true);
+      }
+
+      if (temFoto) {
+        const abrirModalDoCard = () => {
+          const indiceAtual = parseInt(imgContainer.dataset.indiceAtual) || 0;
+          abrirModalImagens(imagens, produto.nome, indiceAtual);
+        };
+        imgContainer.addEventListener('click', abrirModalDoCard);
+        imgContainer.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            abrirModalDoCard();
+          }
+        });
+      }
+
+      return card;
+    }
+
+    // Renderiza todos os grids de produto a partir de produtosPorCategoria
+    // Card de combo: foto + "Ver mais" (vira e mostra o conteúdo) + "Adicionar"
+    function criarCardCombo(p) {
+      const card = document.createElement('div');
+      card.className = 'combo-card';
+      const attrs = `data-id="${p.id}" data-nome="${p.nome}" data-preco="${p.preco.toFixed(2)}" data-tem-adicionais="1" data-tipo-modal=""`;
+      card.innerHTML = `
+        <div class="combo-inner">
+          <div class="combo-face combo-frente">
+            <div class="combo-foto"${p.imagemUrl ? ` style="background-image:url('${p.imagemUrl}')"` : ''}>${p.pecas ? `<span class="combo-tag">${p.pecas}</span>` : ''}</div>
+            <div class="combo-corpo">
+              <h3>${p.nome}</h3>
+              <div class="combo-preco">R$ ${formatarPreco(p.preco)}</div>
+              <p class="combo-resumo">${p.itens.length ? p.itens.slice(0, 4).join(' · ') + ' · e mais…' : 'Conteúdo do combo em breve'}</p>
+              <div class="combo-acoes">
+                <button type="button" class="btn-vermais">Ver mais</button>
+                <button type="button" class="btn-add" ${attrs}>Adicionar</button>
+              </div>
+            </div>
+          </div>
+          <div class="combo-face combo-verso">
+            <h3>${p.nome}${p.pecas ? ` <small>· ${p.pecas}</small>` : ''}</h3>
+            <p class="combo-sub">O que vem no combo</p>
+            <ul>${p.itens.length ? p.itens.map(i => `<li>${i}</li>`).join('') : '<li>Lista de itens em breve</li>'}</ul>
+            <div class="combo-acoes">
+              <button type="button" class="btn-vermais">Voltar</button>
+              <button type="button" class="btn-add" ${attrs}>Adicionar</button>
+            </div>
+          </div>
+        </div>`;
+      card.querySelectorAll('.btn-vermais').forEach(b => b.addEventListener('click', () => card.classList.toggle('virado')));
+      return card;
+    }
+
+    // Card de peça unidade: mesmo visual do combo, sem "Ver mais"
+    function criarCardPeca(p) {
+      const card = document.createElement('div');
+      card.className = 'peca-card';
+      const foto = p.imagemUrl ? ` style="background-image:url('${p.imagemUrl}')"` : '';
+      card.innerHTML = `
+        <div class="peca-foto${p.imagemUrl ? ' com-foto' : ''}"${foto}></div>
+        <div class="peca-corpo">
+          <h3>${p.nome}</h3>
+          <div class="peca-rodape">
+            <span class="peca-preco">R$ ${formatarPreco(p.preco)}</span>
+            <button type="button" class="btn-add" data-id="${p.id}" data-nome="${p.nome}" data-preco="${p.preco.toFixed(2)}" data-tem-adicionais="0" data-tipo-modal="">Adicionar</button>
+          </div>
+        </div>`;
+      return card;
+    }
+
+    document.querySelectorAll('.produtos-grid[data-categoria]').forEach(grid => {
+      const categoria = grid.dataset.categoria;
+      const lista = produtosPorCategoria[categoria] || [];
+      lista.forEach(produto => grid.appendChild(produto.itens ? criarCardCombo(produto) : criarCardPeca(produto)));
+    });
+
+    // ===== Modal de fotos: abre em tela cheia, com setas pra navegar =====
+    const imgModal = document.getElementById('imgModal');
+    const imgModalImg = document.getElementById('imgModalImg');
+    const imgModalLegenda = document.getElementById('imgModalLegenda');
+    const imgModalFechar = document.getElementById('imgModalFechar');
+    const imgModalPrev = document.getElementById('imgModalPrev');
+    const imgModalNext = document.getElementById('imgModalNext');
+
+    let modalImagens = [];
+    let modalNomeProduto = '';
+    let modalIndice = 0;
+
+    function atualizarModalImagem() {
+      imgModalImg.src = modalImagens[modalIndice];
+      imgModalImg.alt = modalNomeProduto;
+      imgModalLegenda.textContent = modalImagens.length > 1
+        ? `${modalNomeProduto} (${modalIndice + 1}/${modalImagens.length})`
+        : modalNomeProduto;
+    }
+
+    function abrirModalImagens(imagens, nomeProduto, indiceInicial) {
+      modalImagens = imagens;
+      modalNomeProduto = nomeProduto;
+      modalIndice = indiceInicial || 0;
+
+      // Enquanto o modal tiver aberto, os slides dos cards param de trocar sozinhos.
+      pausarTodosSliders();
+
+      atualizarModalImagem();
+      imgModal.classList.add('aberto');
+      imgModal.setAttribute('aria-hidden', 'false');
+
+      const temVarias = imagens.length > 1;
+      imgModalPrev.style.display = temVarias ? 'flex' : 'none';
+      imgModalNext.style.display = temVarias ? 'flex' : 'none';
+    }
+
+    function fecharModalImagens() {
+      imgModal.classList.remove('aberto');
+      imgModal.setAttribute('aria-hidden', 'true');
+      // Ao sair do modal, os slides voltam a trocar sozinhos.
+      retomarTodosSliders();
+    }
+
+    function modalFotoAnterior() {
+      modalIndice = (modalIndice - 1 + modalImagens.length) % modalImagens.length;
+      atualizarModalImagem();
+    }
+
+    function modalProximaFoto() {
+      modalIndice = (modalIndice + 1) % modalImagens.length;
+      atualizarModalImagem();
+    }
+
+    imgModalFechar.addEventListener('click', fecharModalImagens);
+    imgModalPrev.addEventListener('click', modalFotoAnterior);
+    imgModalNext.addEventListener('click', modalProximaFoto);
+
+    // Clicar fora da foto (no fundo escurecido) fecha o modal
+    imgModal.addEventListener('click', (e) => {
+      if (e.target === imgModal) fecharModalImagens();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!imgModal.classList.contains('aberto')) return;
+      if (e.key === 'Escape') fecharModalImagens();
+      if (e.key === 'ArrowLeft') modalFotoAnterior();
+      if (e.key === 'ArrowRight') modalProximaFoto();
+    });
+
+    // Deslizar o dedo no celular também navega entre as fotos
+    let modalToqueInicioX = 0;
+    imgModal.addEventListener('touchstart', (e) => {
+      modalToqueInicioX = e.touches[0].clientX;
+    }, { passive: true });
+    imgModal.addEventListener('touchend', (e) => {
+      const diferenca = e.changedTouches[0].clientX - modalToqueInicioX;
+      if (Math.abs(diferenca) > 40 && modalImagens.length > 1) {
+        if (diferenca > 0) modalFotoAnterior();
+        else modalProximaFoto();
+      }
+    });
+
+    // Setinhas dos sliders de produtos (Destaques, Bolos, Tortas, Doces finos, Especiais)
+    // Carrossel infinito: ao chegar num limite, volta pro outro lado.
+    document.querySelectorAll('.slider-wrapper').forEach(wrapper => {
+      const grid = wrapper.querySelector('.produtos-grid');
+      const prevBtn = wrapper.querySelector('.slider-seta.prev');
+      const nextBtn = wrapper.querySelector('.slider-seta.next');
+
+      function passo() {
+        const card = grid.querySelector('.produto-card');
+        if (!card) return 300;
+        const style = getComputedStyle(grid);
+        const gap = parseInt(style.columnGap || style.gap) || 24;
+        return card.offsetWidth + gap;
+      }
+
+      function noFinal() {
+        return grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 2;
+      }
+
+      function noInicio() {
+        return grid.scrollLeft <= 2;
+      }
+
+      prevBtn.addEventListener('click', () => {
+        if (noInicio()) {
+          grid.scrollTo({ left: grid.scrollWidth, behavior: 'smooth' });
+        } else {
+          grid.scrollBy({ left: -passo(), behavior: 'smooth' });
+        }
+      });
+
+      nextBtn.addEventListener('click', () => {
+        if (noFinal()) {
+          grid.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          grid.scrollBy({ left: passo(), behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
