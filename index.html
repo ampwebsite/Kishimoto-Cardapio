@@ -6,9 +6,14 @@
 <title>Kishimoto Sushi | Sushi delivery em Imbituba</title>
 <meta name="description" content="Combinados e peças avulsas de sushi, somente delivery em Imbituba - SC. Peça no Kishimoto Sushi!">
 <meta property="og:site_name" content="Kishimoto Sushi">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ampwebsite.github.io/Kishimoto-Cardapio/">
+<meta property="og:image" content="https://ampwebsite.github.io/Kishimoto-Cardapio/assets/imagens/thumb.jpg">
+<meta property="og:image:alt" content="Kishimoto Sushi">
 <meta property="og:title" content="Kishimoto Sushi">
 <meta property="og:description" content="Combinados e peças avulsas de sushi, somente delivery em Imbituba - SC. Peça no Kishimoto Sushi!">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://ampwebsite.github.io/Kishimoto-Cardapio/assets/imagens/thumb.jpg">
 <meta name="twitter:title" content="Kishimoto Sushi">
 <meta name="twitter:description" content="Combinados e peças avulsas de sushi, somente delivery em Imbituba - SC. Peça no Kishimoto Sushi!">
 <link rel="icon" type="image/png" href="assets/imagens/logo.png">
@@ -70,7 +75,9 @@
     font-weight: 600;
   }
 
-  .btn-header, .tag-pill, nav a, .btn-add {
+  .btn-header,
+nav a,
+.btn-add{
     font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
     letter-spacing: 0.4px;
   }
@@ -515,36 +522,13 @@
     cursor: pointer;
   }
 
-  .hero-slide {
-    opacity: 0;
-    transition: opacity 1.2s ease;
-  }
+  
 
-  .hero-slide.ativa {
-    opacity: 1;
-  }
+  
 
-  .hero-image.pausado::after {
-    content: '\275A\275A';
-    position: absolute;
-    bottom: 14px;
-    right: 14px;
-    z-index: 2;
-    font-size: 14px;
-    color: var(--branco);
-    background: rgba(0,0,0,0.45);
-    padding: 4px 8px;
-    border-radius: 6px;
-    letter-spacing: 2px;
-  }
+  
 
-  .produto-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    border-radius: inherit;
-  }
+  
 
   /* Lado direito: cartão com o nome/tagline, em rosa suave */
   .hero-content {
@@ -567,13 +551,7 @@
     letter-spacing: 0;
   }
 
-  .hero-logo {
-    align-self: center;
-    width: 100%;
-    max-width: 320px;
-    height: auto;
-    display: block;
-  }
+  
 
   .horario-funcionamento {
     display: flex;
@@ -596,24 +574,14 @@
     background: rgba(255, 255, 255, 0.08);
   }
 
-  .status .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #5fe08a;
-    box-shadow: 0 0 0 3px rgba(95, 224, 138, 0.25);
-    animation: pulseStatus 2s infinite;
-  }
+  
 
   @keyframes pulseStatus {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.45; }
   }
 
-  .status.is-closed .dot {
-    background: #f2665a;
-    box-shadow: 0 0 0 3px rgba(242, 102, 90, 0.25);
-  }
+  
 
   .horario-detalhe {
     font-size: 13px;
@@ -646,32 +614,11 @@
     max-width: 380px;
   }
 
-  .tags {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 8px;
-  }
+  
 
-  .tag-pill {
-    border: 1px solid var(--cobre-claro);
-    border-radius: 20px;
-    padding: 8px 16px;
-    font-size: 12px;
-    letter-spacing: 1px;
-  }
+  
 
-  @media (min-width: 901px) {
-    .tags {
-      flex-wrap: nowrap;
-      gap: 8px;
-    }
-    .tag-pill {
-      padding: 8px 12px;
-      white-space: nowrap;
-    }
-  }
+  
 
   /* ===== PRODUTOS ===== */
   #produtos {
@@ -729,21 +676,13 @@
     background-position: center;
   }
 
-  .categoria-bolinha-img[data-categoria-icone="tradicionais"] {
-    background-image: url('assets/imagens/tadicional.jpg');
-  }
+  
 
-  .categoria-bolinha-img[data-categoria-icone="doces"] {
-    background-image: url('assets/imagens/morango.jpg');
-  }
+  
 
-  .categoria-bolinha-img[data-categoria-icone="porcoes"] {
-    background-image: url('assets/imagens/batata.jpg');
-  }
+  
 
-  .categoria-bolinha-img[data-categoria-icone="bebidas"] {
-    background-image: url('assets/imagens/lata.jpg');
-  }
+  
 
   .categoria-bolinha span {
     font-size: 13px;
@@ -992,9 +931,7 @@
     }
   }
 
-  .slider-wrapper {
-    position: relative;
-  }
+  
 
   .produtos-grid {
     display: flex;
@@ -1011,10 +948,7 @@
     display: none;
   }
 
-  .produtos-grid .produto-card {
-    flex: 0 0 calc((100% - 48px) / 3);
-    scroll-snap-align: start;
-  }
+  
 
   /* Grade do catálogo único: sem carrossel, quebra linha e cresce sozinha
      conforme mais produtos são adicionados no JS. Usa flex (não grid) pra
@@ -1028,202 +962,53 @@
     gap: 24px;
   }
 
-  .produtos-grid.grade .produto-card {
-    flex: 1 1 230px;
-    max-width: 300px;
-  }
+  
 
-  .slider-seta {
-    position: absolute;
-    top: 40%;
-    transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: var(--superficie);
-    border: none;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-    color: var(--rosa-texto);
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 2;
-  }
+  
 
-  .slider-seta.prev {
-    left: -20px;
-  }
+  
 
-  .slider-seta.next {
-    right: -20px;
-  }
+  
 
-  .produto-card {
-    background: var(--superficie);
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 2px 12px rgba(122,74,58,0.08);
-    border: 1px solid var(--rosa-claro);
-  }
+  
 
-  .produto-info h3 {
-    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-    font-weight: 600;
-  }
+  
 
-  .produto-img {
-    position: relative;
-    aspect-ratio: 4/3;
-    background: var(--rosa-claro);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--rosa-texto);
-    font-size: 13px;
-    text-align: center;
-    overflow: hidden;
-    cursor: pointer;
-  }
+  
 
-  .produto-img.sem-foto {
-    cursor: default;
-  }
+  
 
-  .produto-img-placeholder {
-    font-size: 44px;
-    line-height: 1;
-    opacity: 0.6;
-  }
+  
 
-  .produto-img-slide {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.9s ease;
-  }
+  
 
-  .produto-img-slide.ativa {
-    opacity: 1;
-  }
+  
 
-  .produto-img-dots {
-    position: absolute;
-    bottom: 8px;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    gap: 6px;
-    z-index: 2;
-  }
+  
 
-  .produto-img-dots .dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.6);
-    transition: background 0.3s ease, transform 0.3s ease;
-  }
+  
 
-  .produto-img-dots .dot.ativo {
-    background: var(--superficie);
-    transform: scale(1.3);
-  }
+  
 
   /* ===== MODAL DE FOTOS DO PRODUTO ===== */
-  .img-modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.92);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 200;
-    opacity: 0;
-    pointer-events: none;
-    padding: 24px;
-    transition: opacity 0.25s ease;
-  }
+  
 
-  .img-modal.aberto {
-    opacity: 1;
-    pointer-events: auto;
-  }
+  
 
-  .img-modal-conteudo {
-    max-width: min(90vw, 560px);
-    max-height: 85vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-  }
+  
 
-  .img-modal-conteudo img {
-    max-width: 100%;
-    max-height: 75vh;
-    border-radius: 16px;
-    object-fit: contain;
-    background: var(--superficie);
-    border: 2px solid var(--cobre-claro);
-  }
+  
 
-  .img-modal-legenda {
-    color: var(--branco);
-    font-size: 14px;
-    text-align: center;
-    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-  }
+  
 
-  .img-modal-fechar {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: rgba(255,255,255,0.15);
-    color: var(--branco);
-    border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    font-size: 24px;
-    line-height: 1;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  
 
-  .img-modal-seta {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255,255,255,0.15);
-    color: var(--branco);
-    border: none;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    font-size: 18px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  
 
-  .img-modal-seta.prev { left: 20px; }
-  .img-modal-seta.next { right: 20px; }
+  
+  
 
-  @media (max-width: 600px) {
-    .img-modal-seta { width: 36px; height: 36px; }
-    .img-modal-fechar { width: 34px; height: 34px; top: 12px; right: 12px; }
-    .img-modal-seta.prev { left: 12px; }
-    .img-modal-seta.next { right: 12px; }
-  }
+  
 
   /* MODAL DE ADICIONAIS */
   .add-modal-overlay {
@@ -1402,35 +1187,15 @@
     opacity: 0.88;
   }
 
-  .produto-info {
-    padding: 16px;
-  }
+  
 
-  .produto-info h3 {
-    font-size: 15px;
-    color: var(--rosa-texto);
-    margin-bottom: 4px;
-  }
+  
 
-  .produto-info p {
-    font-size: 12px;
-    color: var(--rosa-texto);
-    margin-bottom: 12px;
-  }
+  
 
-  .produto-preco {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
+  
 
-  .produto-preco span {
-    font-weight: 700;
-    color: var(--rosa-texto);
-    font-size: 16px;
-  }
+  
 
   .btn-add {
     background: linear-gradient(135deg, var(--rosa), var(--rosa-escuro));
@@ -1507,42 +1272,17 @@
     .hero-content p {
       max-width: 100%;
     }
-    .tags {
-      justify-content: center;
-    }
-    .produtos-grid .produto-card {
-      flex: 0 0 calc((100% - 16px) / 2);
-      display: flex;
-      flex-direction: column;
-    }
-    .produtos-grid .produto-card .produto-info {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
+    
+    
+    
     .produtos-grid {
       gap: 16px;
     }
-    .slider-seta {
-      width: 32px;
-      height: 32px;
-      font-size: 14px;
-    }
-    .slider-seta.prev {
-      left: -8px;
-    }
-    .slider-seta.next {
-      right: -8px;
-    }
-    .produto-preco {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 10px;
-      margin-top: auto;
-    }
-    .produto-preco span {
-      font-size: 14px;
-    }
+    
+    
+    
+    
+    
     .btn-add {
       width: 100%;
       text-align: center;
@@ -1575,8 +1315,8 @@
   .categoria-bolinha-img[data-categoria-icone="pecas"]::before { content: "🍣"; }
   .categoria-bolinha-img.com-foto::before { content: none; }
   .categoria-bolinha-img.com-foto { background-size: cover; background-position: center; background-repeat: no-repeat; }
-  .produto-card { border: 1px solid #2a2a2a; }
-  .produto-img-placeholder { font-size: 46px; background: linear-gradient(135deg, var(--rosa), var(--rosa-escuro)); }
+  
+  
   footer, footer .footer-body { background: #000 !important; clip-path: none !important; }
   footer { border-top: 3px solid var(--rosa); }
 
@@ -1588,35 +1328,26 @@
     gap: 24px;
     overflow: visible;
   }
-  .produtos-grid.grade .produto-card {
-    grid-column: span 2;
-    flex: none;
-    max-width: none;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
+  
   /* última linha incompleta fica centralizada */
-  .produtos-grid.grade .produto-card:nth-child(3n+1):last-child { grid-column: 3 / span 2; }
-  .produtos-grid.grade .produto-card:nth-child(3n+1):nth-last-child(2) { grid-column: 2 / span 2; }
-  .produtos-grid.grade .produto-card:nth-child(3n+2):last-child { grid-column: 4 / span 2; }
-  .produto-card .produto-img { flex: none; }
-  .produto-card .produto-info { display: flex; flex-direction: column; flex: 1; }
-  .produto-card .produto-info p { margin-bottom: 16px; }
-  .produto-card .produto-preco { margin-top: auto; padding-top: 12px; border-top: 1px solid #2a2a2a; }
-  .produto-card .produto-preco span { color: var(--cobre); }
+  
+  
+  
+  
+  
+  
+  
+  
   @media (max-width: 900px) {
     .produtos-grid.grade { grid-template-columns: repeat(4, 1fr); gap: 16px; }
-    .produtos-grid.grade .produto-card,
-    .produtos-grid.grade .produto-card:nth-child(n) { grid-column: span 2; }
-    .produtos-grid.grade .produto-card:nth-child(2n+1):last-child { grid-column: 2 / span 2; }
+    
+    
   }
   @media (max-width: 560px) {
     .produtos-grid.grade { grid-template-columns: 1fr; }
-    .produtos-grid.grade .produto-card,
-    .produtos-grid.grade .produto-card:nth-child(n) { grid-column: auto; }
-    .produto-card .produto-preco { flex-direction: row; align-items: center; }
-    .produto-card .btn-add { width: auto; }
+    
+    
+    
   }
 
   /* ===== COMBOS: card com foto que vira ===== */
@@ -1646,8 +1377,8 @@
   @media (max-width: 560px) { .combo-card { width: min(100%, 300px); height: 340px; } }
 
   /* peças e extras sem foto: cards compactos, sem o bloco vermelho gigante */
-  .produto-img.sem-foto { display: none; }
-  .produto-card .produto-info { padding: 14px; }
+  
+  
 
   /* ===== POP-UP DE EXTRAS ===== */
   .add-modal { border-top: 4px solid var(--rosa); }
@@ -1957,17 +1688,6 @@
       <button class="cart-btn-finalizar" id="cartFinalizar" disabled>Finalizar Compra</button>
     </div>
   </aside>
-
-  <!-- MODAL DE FOTOS DO PRODUTO -->
-  <div class="img-modal" id="imgModal" aria-hidden="true">
-    <button class="img-modal-fechar" id="imgModalFechar" aria-label="Fechar">&times;</button>
-    <button class="img-modal-seta prev" id="imgModalPrev" aria-label="Foto anterior">&#10094;</button>
-    <div class="img-modal-conteudo">
-      <img id="imgModalImg" src="" alt="">
-      <div class="img-modal-legenda" id="imgModalLegenda"></div>
-    </div>
-    <button class="img-modal-seta next" id="imgModalNext" aria-label="Próxima foto">&#10095;</button>
-  </div>
 
   <!-- POP-UP DE EXTRAS: abre ao clicar em "Adicionar" num combo -->
   <div class="add-modal-overlay" id="addModalOverlay" aria-hidden="true">
@@ -2681,123 +2401,6 @@
       })(0);
     });
 
-    // ===== Slideshow das fotos do produto + modal de visualização =====
-    // Cada produto pode ter mais de uma foto: basta usar "imagens: [url1, url2, ...]"
-    // no lugar de "imagemUrl" lá em cima nos dados do produto. Com 2+ fotos, o card
-    // troca de foto sozinho a cada 3s (fade suave); com 1 foto só, fica parado.
-    const todosSliders = [];
-    const ATRASO_ENTRE_CARDS = 1800; // ms de defasagem entre o início de cada card
-
-    function iniciarAutoplaySlider(slider, comAtraso) {
-      pararAutoplaySlider(slider);
-      if (slider.total < 2) return;
-
-      const atraso = comAtraso ? (slider.atrasoInicial || 0) : 0;
-
-      slider.timeoutInicial = setTimeout(() => {
-        avancarSlider(slider);
-        slider.timer = setInterval(() => avancarSlider(slider), 3000);
-      }, atraso);
-    }
-
-    function pararAutoplaySlider(slider) {
-      if (slider.timeoutInicial) {
-        clearTimeout(slider.timeoutInicial);
-        slider.timeoutInicial = null;
-      }
-      if (slider.timer) {
-        clearInterval(slider.timer);
-        slider.timer = null;
-      }
-    }
-
-    function avancarSlider(slider) {
-      const slides = slider.container.querySelectorAll('.produto-img-slide');
-      const dots = slider.container.querySelectorAll('.dot');
-      slides[slider.indice].classList.remove('ativa');
-      if (dots[slider.indice]) dots[slider.indice].classList.remove('ativo');
-      slider.indice = (slider.indice + 1) % slider.total;
-      slides[slider.indice].classList.add('ativa');
-      if (dots[slider.indice]) dots[slider.indice].classList.add('ativo');
-      slider.container.dataset.indiceAtual = slider.indice;
-    }
-
-    function pausarTodosSliders() {
-      todosSliders.forEach(pararAutoplaySlider);
-    }
-
-    function retomarTodosSliders() {
-      todosSliders.forEach(slider => iniciarAutoplaySlider(slider, false));
-    }
-
-    function criarCardProduto(produto) {
-      const card = document.createElement('div');
-      card.className = 'produto-card';
-
-      const imagens = (produto.imagens && produto.imagens.length)
-        ? produto.imagens
-        : (produto.imagemUrl ? [produto.imagemUrl] : []);
-
-      const temFoto = imagens.length > 0;
-
-      const slidesHtml = temFoto
-        ? imagens.map((src, i) => `<img class="produto-img-slide${i === 0 ? ' ativa' : ''}" src="${src}" alt="${produto.nome}">`).join('')
-        : `<div class="produto-img-placeholder" aria-hidden="true">🍣</div>`;
-
-      const dotsHtml = imagens.length > 1
-        ? `<div class="produto-img-dots">${imagens.map((_, i) => `<span class="dot${i === 0 ? ' ativo' : ''}"></span>`).join('')}</div>`
-        : '';
-
-      const descricaoHtml = produto.descricao ? `<p>${produto.descricao}</p>` : '';
-      const textoBotao = produto.temAdicionais ? 'Adicionar' : 'Adicionar';
-
-      card.innerHTML = `
-        <div class="produto-img${temFoto ? '' : ' sem-foto'}" role="${temFoto ? 'button' : 'presentation'}" ${temFoto ? 'tabindex="0"' : ''} aria-label="Ver fotos de ${produto.nome}" data-indice-atual="0">
-          ${slidesHtml}
-          ${dotsHtml}
-        </div>
-        <div class="produto-info">
-          <h3>${produto.nome}</h3>
-          ${descricaoHtml}
-          <div class="produto-preco">
-            <span>R$ ${formatarPreco(produto.preco)}</span>
-            <button class="btn-add" data-id="${produto.id || produto.nome}" data-nome="${produto.nome}" data-preco="${produto.preco.toFixed(2)}" data-tem-adicionais="${produto.temAdicionais ? '1' : '0'}" data-tipo-modal="${produto.tipoModal || ''}">${textoBotao}</button>
-          </div>
-        </div>
-      `;
-
-      const imgContainer = card.querySelector('.produto-img');
-
-      if (temFoto && imagens.length > 1) {
-        const slider = {
-          container: imgContainer,
-          total: imagens.length,
-          indice: 0,
-          timer: null,
-          timeoutInicial: null,
-          atrasoInicial: todosSliders.length * ATRASO_ENTRE_CARDS
-        };
-        todosSliders.push(slider);
-        iniciarAutoplaySlider(slider, true);
-      }
-
-      if (temFoto) {
-        const abrirModalDoCard = () => {
-          const indiceAtual = parseInt(imgContainer.dataset.indiceAtual) || 0;
-          abrirModalImagens(imagens, produto.nome, indiceAtual);
-        };
-        imgContainer.addEventListener('click', abrirModalDoCard);
-        imgContainer.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            abrirModalDoCard();
-          }
-        });
-      }
-
-      return card;
-    }
-
     // Renderiza todos os grids de produto a partir de produtosPorCategoria
     // Card de combo: foto + "Ver mais" (vira e mostra o conteúdo) + "Adicionar"
     function criarCardCombo(p) {
@@ -2853,129 +2456,6 @@
       const categoria = grid.dataset.categoria;
       const lista = produtosPorCategoria[categoria] || [];
       lista.forEach(produto => grid.appendChild(produto.itens ? criarCardCombo(produto) : criarCardPeca(produto)));
-    });
-
-    // ===== Modal de fotos: abre em tela cheia, com setas pra navegar =====
-    const imgModal = document.getElementById('imgModal');
-    const imgModalImg = document.getElementById('imgModalImg');
-    const imgModalLegenda = document.getElementById('imgModalLegenda');
-    const imgModalFechar = document.getElementById('imgModalFechar');
-    const imgModalPrev = document.getElementById('imgModalPrev');
-    const imgModalNext = document.getElementById('imgModalNext');
-
-    let modalImagens = [];
-    let modalNomeProduto = '';
-    let modalIndice = 0;
-
-    function atualizarModalImagem() {
-      imgModalImg.src = modalImagens[modalIndice];
-      imgModalImg.alt = modalNomeProduto;
-      imgModalLegenda.textContent = modalImagens.length > 1
-        ? `${modalNomeProduto} (${modalIndice + 1}/${modalImagens.length})`
-        : modalNomeProduto;
-    }
-
-    function abrirModalImagens(imagens, nomeProduto, indiceInicial) {
-      modalImagens = imagens;
-      modalNomeProduto = nomeProduto;
-      modalIndice = indiceInicial || 0;
-
-      // Enquanto o modal tiver aberto, os slides dos cards param de trocar sozinhos.
-      pausarTodosSliders();
-
-      atualizarModalImagem();
-      imgModal.classList.add('aberto');
-      imgModal.setAttribute('aria-hidden', 'false');
-
-      const temVarias = imagens.length > 1;
-      imgModalPrev.style.display = temVarias ? 'flex' : 'none';
-      imgModalNext.style.display = temVarias ? 'flex' : 'none';
-    }
-
-    function fecharModalImagens() {
-      imgModal.classList.remove('aberto');
-      imgModal.setAttribute('aria-hidden', 'true');
-      // Ao sair do modal, os slides voltam a trocar sozinhos.
-      retomarTodosSliders();
-    }
-
-    function modalFotoAnterior() {
-      modalIndice = (modalIndice - 1 + modalImagens.length) % modalImagens.length;
-      atualizarModalImagem();
-    }
-
-    function modalProximaFoto() {
-      modalIndice = (modalIndice + 1) % modalImagens.length;
-      atualizarModalImagem();
-    }
-
-    imgModalFechar.addEventListener('click', fecharModalImagens);
-    imgModalPrev.addEventListener('click', modalFotoAnterior);
-    imgModalNext.addEventListener('click', modalProximaFoto);
-
-    // Clicar fora da foto (no fundo escurecido) fecha o modal
-    imgModal.addEventListener('click', (e) => {
-      if (e.target === imgModal) fecharModalImagens();
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (!imgModal.classList.contains('aberto')) return;
-      if (e.key === 'Escape') fecharModalImagens();
-      if (e.key === 'ArrowLeft') modalFotoAnterior();
-      if (e.key === 'ArrowRight') modalProximaFoto();
-    });
-
-    // Deslizar o dedo no celular também navega entre as fotos
-    let modalToqueInicioX = 0;
-    imgModal.addEventListener('touchstart', (e) => {
-      modalToqueInicioX = e.touches[0].clientX;
-    }, { passive: true });
-    imgModal.addEventListener('touchend', (e) => {
-      const diferenca = e.changedTouches[0].clientX - modalToqueInicioX;
-      if (Math.abs(diferenca) > 40 && modalImagens.length > 1) {
-        if (diferenca > 0) modalFotoAnterior();
-        else modalProximaFoto();
-      }
-    });
-
-    // Setinhas dos sliders de produtos (Destaques, Bolos, Tortas, Doces finos, Especiais)
-    // Carrossel infinito: ao chegar num limite, volta pro outro lado.
-    document.querySelectorAll('.slider-wrapper').forEach(wrapper => {
-      const grid = wrapper.querySelector('.produtos-grid');
-      const prevBtn = wrapper.querySelector('.slider-seta.prev');
-      const nextBtn = wrapper.querySelector('.slider-seta.next');
-
-      function passo() {
-        const card = grid.querySelector('.produto-card');
-        if (!card) return 300;
-        const style = getComputedStyle(grid);
-        const gap = parseInt(style.columnGap || style.gap) || 24;
-        return card.offsetWidth + gap;
-      }
-
-      function noFinal() {
-        return grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 2;
-      }
-
-      function noInicio() {
-        return grid.scrollLeft <= 2;
-      }
-
-      prevBtn.addEventListener('click', () => {
-        if (noInicio()) {
-          grid.scrollTo({ left: grid.scrollWidth, behavior: 'smooth' });
-        } else {
-          grid.scrollBy({ left: -passo(), behavior: 'smooth' });
-        }
-      });
-
-      nextBtn.addEventListener('click', () => {
-        if (noFinal()) {
-          grid.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          grid.scrollBy({ left: passo(), behavior: 'smooth' });
-        }
-      });
     });
   </script>
 
